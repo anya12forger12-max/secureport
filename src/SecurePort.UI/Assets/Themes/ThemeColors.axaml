@@ -1,0 +1,105 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DARK THEME (Default)
+         Deep navy palette with vibrant red-pink and cyan accents.
+         Maps to ThemeManager.BuildDarkPalette() keys.
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Background Colors -->
+    <Color x:Key="PrimaryBackgroundColor">#1a1a2e</Color>
+    <Color x:Key="SecondaryBackgroundColor">#16213e</Color>
+    <Color x:Key="CardBackgroundColor">#1e2a3a</Color>
+    <Color x:Key="SurfaceBackgroundColor">#0f3460</Color>
+
+    <!-- Accent Colors -->
+    <Color x:Key="PrimaryAccentColor">#e94560</Color>
+    <Color x:Key="SecondaryAccentColor">#00d2ff</Color>
+
+    <!-- Derived Accent Colors -->
+    <Color x:Key="PrimaryAccentHoverColor">#ff6b81</Color>
+    <Color x:Key="PrimaryAccentPressedColor">#c73050</Color>
+    <Color x:Key="PrimaryAccentSubtleColor">#33e94560</Color>
+    <Color x:Key="SecondaryAccentHoverColor">#33dfff</Color>
+    <Color x:Key="SecondaryAccentSubtleColor">#1a00d2ff</Color>
+
+    <!-- Text Colors -->
+    <Color x:Key="TextPrimaryColor">#ffffff</Color>
+    <Color x:Key="TextSecondaryColor">#a0aec0</Color>
+    <Color x:Key="TextDisabledColor">#4a5568</Color>
+    <Color x:Key="TextOnAccentColor">#ffffff</Color>
+
+    <!-- Border Colors -->
+    <Color x:Key="BorderColor">#2d3748</Color>
+    <Color x:Key="BorderFocusedColor">#e94560</Color>
+    <Color x:Key="BorderSubtleColor">#1e2a3a</Color>
+
+    <!-- Status Colors -->
+    <Color x:Key="SuccessColor">#48bb78</Color>
+    <Color x:Key="SuccessSubtleColor">#1a48bb78</Color>
+    <Color x:Key="WarningColor">#ed8936</Color>
+    <Color x:Key="WarningSubtleColor">#1aed8936</Color>
+    <Color x:Key="ErrorColor">#fc8181</Color>
+    <Color x:Key="ErrorSubtleColor">#1afc8181</Color>
+    <Color x:Key="InfoColor">#4299e1</Color>
+    <Color x:Key="InfoSubtleColor">#1a4299e1</Color>
+
+    <!-- State Colors -->
+    <Color x:Key="DisabledColor">#4a5568</Color>
+    <Color x:Key="DisabledTextColor">#718096</Color>
+    <Color x:Key="DisabledBorderColor">#2d3748</Color>
+
+    <!-- Overlay Colors -->
+    <Color x:Key="OverlayColor">#80000000</Color>
+    <Color x:Key="ScrimColor">#40000000</Color>
+
+    <!-- Scrollbar Colors -->
+    <Color x:Key="ScrollBarThumbColor">#4a5568</Color>
+    <Color x:Key="ScrollBarThumbHoverColor">#718096</Color>
+    <Color x:Key="ScrollBarTrackColor">#1a1a2e</Color>
+
+    <!-- Brush Resources: Dark Theme -->
+    <SolidColorBrush x:Key="PrimaryBackgroundBrush" Color="{StaticResource PrimaryBackgroundColor}"/>
+    <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="{StaticResource SecondaryBackgroundColor}"/>
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{StaticResource CardBackgroundColor}"/>
+    <SolidColorBrush x:Key="SurfaceBackgroundBrush" Color="{StaticResource SurfaceBackgroundColor}"/>
+
+    <SolidColorBrush x:Key="PrimaryAccentBrush" Color="{StaticResource PrimaryAccentColor}"/>
+    <SolidColorBrush x:Key="PrimaryAccentHoverBrush" Color="{StaticResource PrimaryAccentHoverColor}"/>
+    <SolidColorBrush x:Key="PrimaryAccentPressedBrush" Color="{StaticResource PrimaryAccentPressedColor}"/>
+    <SolidColorBrush x:Key="PrimaryAccentSubtleBrush" Color="{StaticResource PrimaryAccentSubtleColor}"/>
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource SecondaryAccentColor}"/>
+    <SolidColorBrush x:Key="SecondaryAccentHoverBrush" Color="{StaticResource SecondaryAccentHoverColor}"/>
+    <SolidColorBrush x:Key="SecondaryAccentSubtleBrush" Color="{StaticResource SecondaryAccentSubtleColor}"/>
+
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}"/>
+    <SolidColorBrush x:Key="TextDisabledBrush" Color="{StaticResource TextDisabledColor}"/>
+    <SolidColorBrush x:Key="TextOnAccentBrush" Color="{StaticResource TextOnAccentColor}"/>
+
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="BorderFocusedBrush" Color="{StaticResource BorderFocusedColor}"/>
+    <SolidColorBrush x:Key="BorderSubtleBrush" Color="{StaticResource BorderSubtleColor}"/>
+
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}"/>
+    <SolidColorBrush x:Key="SuccessSubtleBrush" Color="{StaticResource SuccessSubtleColor}"/>
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}"/>
+    <SolidColorBrush x:Key="WarningSubtleBrush" Color="{StaticResource WarningSubtleColor}"/>
+    <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource ErrorColor}"/>
+    <SolidColorBrush x:Key="ErrorSubtleBrush" Color="{StaticResource ErrorSubtleColor}"/>
+    <SolidColorBrush x:Key="InfoBrush" Color="{StaticResource InfoColor}"/>
+    <SolidColorBrush x:Key="InfoSubtleBrush" Color="{StaticResource InfoSubtleColor}"/>
+
+    <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource DisabledColor}"/>
+    <SolidColorBrush x:Key="DisabledTextBrush" Color="{StaticResource DisabledTextColor}"/>
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="{StaticResource DisabledBorderColor}"/>
+
+    <SolidColorBrush x:Key="OverlayBrush" Color="{StaticResource OverlayColor}"/>
+    <SolidColorBrush x:Key="ScrimBrush" Color="{StaticResource ScrimColor}"/>
+
+    <SolidColorBrush x:Key="ScrollBarThumbBrush" Color="{StaticResource ScrollBarThumbColor}"/>
+    <SolidColorBrush x:Key="ScrollBarThumbHoverBrush" Color="{StaticResource ScrollBarThumbHoverColor}"/>
+    <SolidColorBrush x:Key="ScrollBarTrackBrush" Color="{StaticResource ScrollBarTrackColor}"/>
+
+</ResourceDictionary>

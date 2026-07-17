@@ -1,0 +1,319 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SecurePort.UI.ViewModels"
+        xmlns:views="using:SecurePort.UI.Views"
+        x:Class="SecurePort.UI.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="SecurePort - Network Security Scanner"
+        MinWidth="900"
+        MinHeight="600"
+        Width="1280"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource PrimaryBackgroundBrush}"
+        Foreground="{StaticResource TextPrimaryBrush}"
+        AutomationProperties.Name="SecurePort Application Window">
+
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Ctrl+1" Command="{Binding NavigateToDashboardCommand}" />
+        <KeyBinding Gesture="Ctrl+2" Command="{Binding NavigateToScanCommand}" />
+        <KeyBinding Gesture="Ctrl+3" Command="{Binding NavigateToHistoryCommand}" />
+        <KeyBinding Gesture="Ctrl+4" Command="{Binding NavigateToSettingsCommand}" />
+        <KeyBinding Gesture="Ctrl+5" Command="{Binding NavigateToAboutCommand}" />
+        <KeyBinding Gesture="Ctrl+B" Command="{Binding ToggleSidebarCommand}" />
+    </Window.KeyBindings>
+
+    <Window.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <views:DashboardView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ScanViewModel}">
+            <views:ScanView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:HistoryViewModel}">
+            <views:HistoryView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <views:SettingsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AboutViewModel}">
+            <views:AboutView />
+        </DataTemplate>
+    </Window.DataTemplates>
+
+    <Grid ColumnDefinitions="280,*">
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             SIDEBAR
+             ═══════════════════════════════════════════════════════════════ -->
+        <Border Grid.Column="0"
+                Classes="sidebar"
+                IsVisible="{Binding IsSidebarOpen}"
+                Background="{StaticResource SecondaryBackgroundBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,1,0"
+                Padding="8">
+
+            <Grid RowDefinitions="Auto,*,Auto">
+
+                <!-- App Logo / Title -->
+                <StackPanel Grid.Row="0"
+                            Spacing="4"
+                            Margin="8,12,8,16">
+                    <Border Background="{StaticResource PrimaryAccentBrush}"
+                            CornerRadius="10"
+                            Width="44"
+                            Height="44"
+                            HorizontalAlignment="Left"
+                            Margin="4,0"
+                            AutomationProperties.Name="SecurePort Logo">
+                        <TextBlock Text="&#x1F512;"
+                                   FontSize="22"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <TextBlock Text="SecurePort"
+                               Classes="title"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TextPrimaryBrush}"
+                               Margin="4,4,4,0"
+                               AutomationProperties.Name="SecurePort Application Title" />
+                    <TextBlock Text="Network Security Scanner"
+                               Classes="caption"
+                               FontSize="11"
+                               Margin="4,0,4,0"
+                               AutomationProperties.Name="Application Subtitle" />
+                </StackPanel>
+
+                <Separator Grid.Row="0"
+                           Margin="16,72,16,0"
+                           VerticalAlignment="Top"
+                           Classes="thick" />
+
+                <!-- Navigation Items -->
+                <ScrollViewer Grid.Row="1"
+                              Margin="0,12,0,0"
+                              VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="2">
+
+                        <!-- Dashboard -->
+                        <Border Classes="nav-item"
+                                CornerRadius="8"
+                                Padding="12,10"
+                                Margin="4,2"
+                                Cursor="Hand"
+                                AutomationProperties.Name="Navigate to Dashboard (Ctrl+1)"
+                                Tag="Dashboard"
+                                Tapped="OnDashboardTapped">
+                            <Grid ColumnDefinitions="32,*">
+                                <TextBlock Text="&#x229E;"
+                                           FontSize="18"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource TextSecondaryBrush}" />
+                                <StackPanel Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="Dashboard"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               Foreground="{StaticResource TextPrimaryBrush}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Scan -->
+                        <Border Classes="nav-item"
+                                CornerRadius="8"
+                                Padding="12,10"
+                                Margin="4,2"
+                                Cursor="Hand"
+                                AutomationProperties.Name="Navigate to Scan (Ctrl+2)"
+                                Tag="Scan"
+                                Tapped="OnScanTapped">
+                            <Grid ColumnDefinitions="32,*">
+                                <TextBlock Text="&#x2295;"
+                                           FontSize="18"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource TextSecondaryBrush}" />
+                                <StackPanel Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="Scan"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               Foreground="{StaticResource TextPrimaryBrush}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- History -->
+                        <Border Classes="nav-item"
+                                CornerRadius="8"
+                                Padding="12,10"
+                                Margin="4,2"
+                                Cursor="Hand"
+                                AutomationProperties.Name="Navigate to History (Ctrl+3)"
+                                Tag="History"
+                                Tapped="OnHistoryTapped">
+                            <Grid ColumnDefinitions="32,*">
+                                <TextBlock Text="&#x2630;"
+                                           FontSize="18"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource TextSecondaryBrush}" />
+                                <StackPanel Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="History"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               Foreground="{StaticResource TextPrimaryBrush}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Settings -->
+                        <Border Classes="nav-item"
+                                CornerRadius="8"
+                                Padding="12,10"
+                                Margin="4,2"
+                                Cursor="Hand"
+                                AutomationProperties.Name="Navigate to Settings (Ctrl+4)"
+                                Tag="Settings"
+                                Tapped="OnSettingsTapped">
+                            <Grid ColumnDefinitions="32,*">
+                                <TextBlock Text="&#x2699;"
+                                           FontSize="18"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource TextSecondaryBrush}" />
+                                <StackPanel Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="Settings"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               Foreground="{StaticResource TextPrimaryBrush}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- About -->
+                        <Border Classes="nav-item"
+                                CornerRadius="8"
+                                Padding="12,10"
+                                Margin="4,2"
+                                Cursor="Hand"
+                                AutomationProperties.Name="Navigate to About (Ctrl+5)"
+                                Tag="About"
+                                Tapped="OnAboutTapped">
+                            <Grid ColumnDefinitions="32,*">
+                                <TextBlock Text="?"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource TextSecondaryBrush}" />
+                                <StackPanel Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="About"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               Foreground="{StaticResource TextPrimaryBrush}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Version at Bottom -->
+                <StackPanel Grid.Row="2"
+                            Margin="16,8,16,12"
+                            Spacing="2">
+                    <Separator Margin="0,0,0,8" />
+                    <TextBlock Text="v1.0.0"
+                               Classes="caption"
+                               FontSize="11"
+                               HorizontalAlignment="Center"
+                               AutomationProperties.Name="Application Version 1.0.0" />
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             MAIN CONTENT AREA
+             ═══════════════════════════════════════════════════════════════ -->
+        <Grid Grid.Column="1"
+              RowDefinitions="Auto,*">
+
+            <!-- Top Bar -->
+            <Border Grid.Row="0"
+                    Background="{StaticResource SecondaryBackgroundBrush}"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="0,0,0,1"
+                    Padding="20,12">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                    <!-- Sidebar Toggle -->
+                    <Button Classes="icon"
+                            Grid.Column="0"
+                            Command="{Binding ToggleSidebarCommand}"
+                            Content="&#x2630;"
+                            FontSize="18"
+                            AutomationProperties.Name="Toggle Sidebar"
+                            TabIndex="0" />
+
+                    <!-- View Title -->
+                    <TextBlock Grid.Column="1"
+                               Margin="16,0,0,0"
+                               Text="{Binding CurrentViewName}"
+                               Classes="title"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               AutomationProperties.Name="Current View Title" />
+
+                    <!-- Status Indicator -->
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                Spacing="8"
+                                VerticalAlignment="Center">
+                        <Border Classes="badge-info"
+                                CornerRadius="10"
+                                Padding="10,4"
+                                IsVisible="{Binding IsScanning}">
+                            <TextBlock Text="Scanning"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="#ffffff" />
+                        </Border>
+                        <TextBlock Text="{Binding StatusBar}"
+                                   Classes="caption"
+                                   FontSize="12"
+                                   VerticalAlignment="Center"
+                                   MaxWidth="300"
+                                   TextTrimming="CharacterEllipsis"
+                                   AutomationProperties.Name="Status Bar" />
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+
+            <!-- Content -->
+            <ContentControl Grid.Row="1"
+                            Content="{Binding CurrentViewModel}"
+                            Margin="0"
+                            ClipToBounds="True"
+                            AutomationProperties.Name="Main Content Area" />
+
+        </Grid>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,543 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SecurePort.UI.ViewModels"
+             xmlns:enums="using:SecurePort.Core.Enums"
+             x:Class="SecurePort.UI.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel"
+             AutomationProperties.Name="Settings View">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="0"
+                    Margin="24,20,24,24"
+                    MaxWidth="800"
+                    HorizontalAlignment="Left">
+
+            <!-- Header -->
+            <StackPanel Spacing="4"
+                        Margin="0,0,0,24">
+                <TextBlock Text="Settings"
+                           Classes="heading"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           AutomationProperties.Name="Settings Title" />
+                <TextBlock Text="Customize your SecurePort experience"
+                           Classes="caption"
+                           FontSize="14"
+                           Margin="0,4,0,0" />
+            </StackPanel>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 APPEARANCE SECTION
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Margin="0,0,0,16"
+                    Padding="24"
+                    CornerRadius="12">
+                <StackPanel Spacing="20">
+
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="Appearance"
+                                   Classes="title"
+                                   FontWeight="SemiBold"
+                                   FontSize="16" />
+                        <TextBlock Text="Customize the look and feel of the application"
+                                   Classes="caption"
+                                   FontSize="12" />
+                    </StackPanel>
+
+                    <Separator />
+
+                    <!-- Theme -->
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Theme"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <RadioButton GroupName="Theme"
+                                         Content="Dark"
+                                         IsChecked="True"
+                                         FontSize="14"
+                                         AutomationProperties.Name="Dark Theme"
+                                         TabIndex="60" />
+                            <RadioButton GroupName="Theme"
+                                         Content="Light"
+                                         FontSize="14"
+                                         AutomationProperties.Name="Light Theme"
+                                         TabIndex="61" />
+                            <RadioButton GroupName="Theme"
+                                         Content="High Contrast"
+                                         FontSize="14"
+                                         AutomationProperties.Name="High Contrast Theme"
+                                         TabIndex="62" />
+                        </StackPanel>
+                        <!-- Theme Preview Swatches -->
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="8"
+                                    Margin="0,4,0,0">
+                            <Border Width="32"
+                                    Height="32"
+                                    CornerRadius="6"
+                                    Background="{StaticResource SecondaryBackgroundBrush}"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    BorderThickness="1"
+                                    ToolTip.Tip="Dark Preview">
+                                <TextBlock Text="D"
+                                           FontSize="10"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="{StaticResource TextPrimaryBrush}" />
+                            </Border>
+                            <Border Width="32"
+                                    Height="32"
+                                    CornerRadius="6"
+                                    Background="#f0f0f0"
+                                    BorderBrush="#d0d0d0"
+                                    BorderThickness="1"
+                                    ToolTip.Tip="Light Preview">
+                                <TextBlock Text="L"
+                                           FontSize="10"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="#333333" />
+                            </Border>
+                            <Border Width="32"
+                                    Height="32"
+                                    CornerRadius="6"
+                                    Background="#000000"
+                                    BorderBrush="#ffffff"
+                                    BorderThickness="2"
+                                    ToolTip.Tip="High Contrast Preview">
+                                <TextBlock Text="HC"
+                                           FontSize="9"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="#ffffff" />
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Language -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Language"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <ComboBox SelectedIndex="0"
+                                  FontSize="14"
+                                  MinHeight="42"
+                                  MaxWidth="300"
+                                  HorizontalAlignment="Left"
+                                  AutomationProperties.Name="Language Selection"
+                                  TabIndex="63">
+                            <ComboBoxItem Content="English" />
+                            <ComboBoxItem Content="Spanish" />
+                            <ComboBoxItem Content="French" />
+                            <ComboBoxItem Content="German" />
+                            <ComboBoxItem Content="Japanese" />
+                            <ComboBoxItem Content="Portuguese" />
+                            <ComboBoxItem Content="Arabic" />
+                            <ComboBoxItem Content="Hindi" />
+                            <ComboBoxItem Content="Chinese" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Font Size -->
+                    <StackPanel Spacing="6">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Font Size"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Grid.Column="1"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       Text="{Binding FontSize, StringFormat='{}{0:F0} px'}" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,200,Auto">
+                            <TextBlock Grid.Column="0"
+                                       Text="A"
+                                       FontSize="10"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextSecondaryBrush}" />
+                            <Slider Grid.Column="1"
+                                    Minimum="10"
+                                    Maximum="24"
+                                    Value="{Binding FontSize}"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True"
+                                    Margin="0,0,8,0"
+                                    AutomationProperties.Name="Font Size Slider"
+                                    TabIndex="64" />
+                            <TextBlock Grid.Column="2"
+                                       Text="A"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextSecondaryBrush}" />
+                        </Grid>
+                        <!-- Font Preview -->
+                        <Border Classes="section"
+                                Padding="12"
+                                CornerRadius="6"
+                                Margin="0,4,0,0">
+                            <TextBlock Text="Preview: The quick brown fox jumps over the lazy dog"
+                                       FontSize="{Binding FontSize}"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       TextWrapping="Wrap" />
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Reduce Motion -->
+                    <Grid ColumnDefinitions="*,Auto"
+                          RowDefinitions="Auto,Auto">
+                        <StackPanel Grid.Row="0"
+                                    Spacing="2">
+                            <TextBlock Text="Reduce Motion"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Text="Minimize animations throughout the interface"
+                                       Classes="caption"
+                                       FontSize="11" />
+                        </StackPanel>
+                        <ToggleSwitch Grid.Row="0"
+                                      Grid.Column="1"
+                                      IsChecked="False"
+                                      AutomationProperties.Name="Reduce Motion Toggle"
+                                      TabIndex="65" />
+                    </Grid>
+
+                    <!-- Screen Reader Mode -->
+                    <Grid ColumnDefinitions="*,Auto"
+                          RowDefinitions="Auto,Auto">
+                        <StackPanel Grid.Row="0"
+                                    Spacing="2">
+                            <TextBlock Text="Screen Reader Mode"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Text="Optimize interface for assistive technology"
+                                       Classes="caption"
+                                       FontSize="11" />
+                        </StackPanel>
+                        <ToggleSwitch Grid.Row="0"
+                                      Grid.Column="1"
+                                      IsChecked="False"
+                                      AutomationProperties.Name="Screen Reader Mode Toggle"
+                                      TabIndex="66" />
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 SCAN DEFAULTS SECTION
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Margin="0,0,0,16"
+                    Padding="24"
+                    CornerRadius="12">
+                <StackPanel Spacing="20">
+
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="Scan Defaults"
+                                   Classes="title"
+                                   FontWeight="SemiBold"
+                                   FontSize="16" />
+                        <TextBlock Text="Configure default values for new scans"
+                                   Classes="caption"
+                                   FontSize="12" />
+                    </StackPanel>
+
+                    <Separator />
+
+                    <!-- Default Timeout -->
+                    <StackPanel Spacing="6">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Default Timeout"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Grid.Column="1"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       Text="{Binding DefaultTimeout, StringFormat='{}{0} ms'}" />
+                        </Grid>
+                        <Slider Minimum="100"
+                                Maximum="5000"
+                                Value="{Binding DefaultTimeout}"
+                                TickFrequency="100"
+                                IsSnapToTickEnabled="False"
+                                AutomationProperties.Name="Default Scan Timeout Slider"
+                                TabIndex="70" />
+                    </StackPanel>
+
+                    <!-- Default Max Concurrent -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Default Max Concurrent Connections"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <NumericUpDown Value="{Binding DefaultMaxConcurrent}"
+                                       Minimum="1"
+                                       Maximum="1000"
+                                       Increment="10"
+                                       FormatString="N0"
+                                       FontSize="14"
+                                       MinHeight="42"
+                                       MaxWidth="200"
+                                       HorizontalAlignment="Left"
+                                       AutomationProperties.Name="Default Max Concurrent Connections"
+                                       TabIndex="71" />
+                    </StackPanel>
+
+                    <!-- Default Port Range -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Default Port Range"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <Grid ColumnDefinitions="Auto,80,Auto,80"
+                              ColumnSpacing="10">
+                            <TextBlock Text="Start"
+                                       Classes="caption"
+                                       FontSize="11"
+                                       VerticalAlignment="Center" />
+                            <NumericUpDown Grid.Column="1"
+                                           Value="1"
+                                           Minimum="1"
+                                           Maximum="65535"
+                                           FormatString="N0"
+                                           FontSize="14"
+                                           MinHeight="40"
+                                           AutomationProperties.Name="Default Port Range Start"
+                                           TabIndex="72" />
+                            <TextBlock Grid.Column="2"
+                                       Text="End"
+                                       Classes="caption"
+                                       FontSize="11"
+                                       VerticalAlignment="Center" />
+                            <NumericUpDown Grid.Column="3"
+                                           Value="1024"
+                                           Minimum="1"
+                                           Maximum="65535"
+                                           FormatString="N0"
+                                           FontSize="14"
+                                           MinHeight="40"
+                                           AutomationProperties.Name="Default Port Range End"
+                                           TabIndex="73" />
+                        </Grid>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 STORAGE SECTION
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Margin="0,0,0,16"
+                    Padding="24"
+                    CornerRadius="12">
+                <StackPanel Spacing="20">
+
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="Storage"
+                                   Classes="title"
+                                   FontWeight="SemiBold"
+                                   FontSize="16" />
+                        <TextBlock Text="Manage data retention and encryption settings"
+                                   Classes="caption"
+                                   FontSize="12" />
+                    </StackPanel>
+
+                    <Separator />
+
+                    <!-- History Retention -->
+                    <StackPanel Spacing="6">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="History Retention"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Grid.Column="1"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       Text="{Binding HistoryRetentionDays, StringFormat='{}{0} days'}" />
+                        </Grid>
+                        <Slider Minimum="7"
+                                Maximum="365"
+                                Value="{Binding HistoryRetentionDays}"
+                                TickFrequency="7"
+                                IsSnapToTickEnabled="True"
+                                AutomationProperties.Name="History Retention Days Slider"
+                                TabIndex="80" />
+                    </StackPanel>
+
+                    <!-- Auto-Delete Old Scans -->
+                    <Grid ColumnDefinitions="*,Auto"
+                          RowDefinitions="Auto,Auto">
+                        <StackPanel Grid.Row="0"
+                                    Spacing="2">
+                            <TextBlock Text="Auto-Delete Old Scans"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Text="Automatically remove scan history beyond retention period"
+                                       Classes="caption"
+                                       FontSize="11" />
+                        </StackPanel>
+                        <ToggleSwitch Grid.Row="0"
+                                      Grid.Column="1"
+                                      IsChecked="{Binding AutoDelete}"
+                                      AutomationProperties.Name="Auto-Delete Old Scans Toggle"
+                                      TabIndex="81" />
+                    </Grid>
+
+                    <!-- Encryption -->
+                    <Grid ColumnDefinitions="*,Auto"
+                          RowDefinitions="Auto,Auto">
+                        <StackPanel Grid.Row="0"
+                                    Spacing="2">
+                            <TextBlock Text="Local Data Encryption"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Text="Encrypt scan data stored on your device"
+                                       Classes="caption"
+                                       FontSize="11" />
+                        </StackPanel>
+                        <ToggleSwitch Grid.Row="0"
+                                      Grid.Column="1"
+                                      IsChecked="{Binding EncryptionEnabled}"
+                                      AutomationProperties.Name="Local Data Encryption Toggle"
+                                      TabIndex="82" />
+                    </Grid>
+
+                    <!-- Encryption Warning -->
+                    <Border Background="{StaticResource WarningSubtleBrush}"
+                            BorderBrush="{StaticResource WarningBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="14,12"
+                            Margin="0,4,0,0">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <TextBlock Text="&#x26A0;"
+                                       FontSize="16"
+                                       VerticalAlignment="Center" />
+                            <TextBlock Text="Encryption protects your scan data locally. Disabling this will store data in plain text on your device."
+                                       FontSize="12"
+                                       Foreground="{StaticResource WarningBrush}"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 LOGGING SECTION
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Margin="0,0,0,20"
+                    Padding="24"
+                    CornerRadius="12">
+                <StackPanel Spacing="20">
+
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="Logging"
+                                   Classes="title"
+                                   FontWeight="SemiBold"
+                                   FontSize="16" />
+                        <TextBlock Text="Configure application logging and diagnostics"
+                                   Classes="caption"
+                                   FontSize="12" />
+                    </StackPanel>
+
+                    <Separator />
+
+                    <!-- Log Level -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Log Level"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <ComboBox SelectedIndex="2"
+                                  FontSize="14"
+                                  MinHeight="42"
+                                  MaxWidth="200"
+                                  HorizontalAlignment="Left"
+                                  AutomationProperties.Name="Log Level Selection"
+                                  TabIndex="90">
+                            <ComboBoxItem Content="Trace" />
+                            <ComboBoxItem Content="Debug" />
+                            <ComboBoxItem Content="Info" />
+                            <ComboBoxItem Content="Warning" />
+                            <ComboBoxItem Content="Error" />
+                            <ComboBoxItem Content="Critical" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Log Retention -->
+                    <StackPanel Spacing="6">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Log Retention"
+                                       Classes="label"
+                                       FontSize="13"
+                                       FontWeight="Medium" />
+                            <TextBlock Grid.Column="1"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       Text="{Binding LogRetentionDays, StringFormat='{}{0} days'}" />
+                        </Grid>
+                        <Slider Minimum="1"
+                                Maximum="90"
+                                Value="{Binding LogRetentionDays}"
+                                TickFrequency="1"
+                                IsSnapToTickEnabled="True"
+                                AutomationProperties.Name="Log Retention Days Slider"
+                                TabIndex="91" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ACTION BUTTONS
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="panel"
+                    Padding="20,16"
+                    CornerRadius="12">
+                <Grid ColumnDefinitions="*,Auto"
+                      ColumnSpacing="12">
+                    <Button Classes="secondary"
+                            Content="Reset to Defaults"
+                            Command="{Binding ResetDefaultsCommand}"
+                            MinWidth="160"
+                            MinHeight="44"
+                            FontSize="14"
+                            HorizontalAlignment="Left"
+                            AutomationProperties.Name="Reset All Settings to Defaults"
+                            TabIndex="100" />
+                    <Button Grid.Column="1"
+                            Classes="primary"
+                            Content="Save Settings"
+                            Command="{Binding SaveCommand}"
+                            MinWidth="160"
+                            MinHeight="44"
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            AutomationProperties.Name="Save All Settings"
+                            TabIndex="101" />
+                </Grid>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>SecurePort.UI</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SecurePort.Core\SecurePort.Core.csproj" />
+    <ProjectReference Include="..\SecurePort.Scanner\SecurePort.Scanner.csproj" />
+    <ProjectReference Include="..\SecurePort.Networking\SecurePort.Networking.csproj" />
+    <ProjectReference Include="..\SecurePort.Security\SecurePort.Security.csproj" />
+    <ProjectReference Include="..\SecurePort.Storage\SecurePort.Storage.csproj" />
+    <ProjectReference Include="..\SecurePort.Configuration\SecurePort.Configuration.csproj" />
+    <ProjectReference Include="..\SecurePort.Logging\SecurePort.Logging.csproj" />
+    <ProjectReference Include="..\SecurePort.Reports\SecurePort.Reports.csproj" />
+    <ProjectReference Include="..\SecurePort.History\SecurePort.History.csproj" />
+    <ProjectReference Include="..\SecurePort.Themes\SecurePort.Themes.csproj" />
+    <ProjectReference Include="..\SecurePort.Accessibility\SecurePort.Accessibility.csproj" />
+    <ProjectReference Include="..\SecurePort.Localization\SecurePort.Localization.csproj" />
+    <ProjectReference Include="..\SecurePort.Utilities\SecurePort.Utilities.csproj" />
+    <ProjectReference Include="..\SecurePort.Results\SecurePort.Results.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Markup.Xaml" Version="11.0.10" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+  </ItemGroup>
+
+</Project>

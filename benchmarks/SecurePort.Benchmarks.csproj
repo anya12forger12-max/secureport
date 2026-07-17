@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>SecurePort.Benchmarks</RootNamespace>
+    <AssemblyName>SecurePort.Benchmarks</AssemblyName>
+    <Description>Performance benchmarks for SecurePort engines and managers</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\SecurePort.Core\SecurePort.Core.csproj" />
+    <ProjectReference Include="..\src\SecurePort.Results\SecurePort.Results.csproj" />
+    <ProjectReference Include="..\src\SecurePort.Security\SecurePort.Security.csproj" />
+    <ProjectReference Include="..\src\SecurePort.Utilities\SecurePort.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

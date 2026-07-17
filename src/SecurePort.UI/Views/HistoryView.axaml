@@ -1,0 +1,255 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SecurePort.UI.ViewModels"
+             xmlns:models="using:SecurePort.Core.Models"
+             xmlns:enums="using:SecurePort.Core.Enums"
+             x:Class="SecurePort.UI.Views.HistoryView"
+             x:DataType="vm:HistoryViewModel"
+             AutomationProperties.Name="Scan History View">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="0"
+                    Margin="24,20,24,24">
+
+            <!-- Header -->
+            <StackPanel Spacing="4"
+                        Margin="0,0,0,20">
+                <TextBlock Text="Scan History"
+                           Classes="heading"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           AutomationProperties.Name="History Title" />
+                <TextBlock Text="Review and manage your previous scan sessions"
+                           Classes="caption"
+                           FontSize="14"
+                           Margin="0,4,0,0" />
+            </StackPanel>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 SEARCH AND FILTER BAR
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Margin="0,0,0,16"
+                    Padding="16"
+                    CornerRadius="12">
+                <StackPanel Spacing="12">
+
+                    <!-- Search Bar -->
+                    <TextBox Classes="search"
+                             Watermark="&#x1F50D;  Search by target hostname or IP..."
+                             Text="{Binding SearchQuery}"
+                             FontSize="14"
+                             MinHeight="44"
+                             AutomationProperties.Name="Search Scan History"
+                             TabIndex="40" />
+
+                    <!-- Filter Chips -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="8">
+                        <TextBlock Text="Status:"
+                                   Classes="label"
+                                   FontSize="12"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,4,0" />
+
+                        <Button Classes="small primary"
+                                Content="All"
+                                MinWidth="55"
+                                MinHeight="30"
+                                FontSize="12"
+                                AutomationProperties.Name="Show All Scans"
+                                TabIndex="41" />
+
+                        <Button Classes="small ghost"
+                                Content="&#x2714; Completed"
+                                MinWidth="100"
+                                MinHeight="30"
+                                FontSize="12"
+                                Foreground="{StaticResource SuccessBrush}"
+                                AutomationProperties.Name="Show Completed Scans"
+                                TabIndex="42" />
+
+                        <Button Classes="small ghost"
+                                Content="&#x2716; Failed"
+                                MinWidth="85"
+                                MinHeight="30"
+                                FontSize="12"
+                                Foreground="{StaticResource ErrorBrush}"
+                                AutomationProperties.Name="Show Failed Scans"
+                                TabIndex="43" />
+
+                        <Button Classes="small ghost"
+                                Content="&#x2718; Cancelled"
+                                MinWidth="95"
+                                MinHeight="30"
+                                FontSize="12"
+                                Foreground="{StaticResource WarningBrush}"
+                                AutomationProperties.Name="Show Cancelled Scans"
+                                TabIndex="44" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 HISTORY DATA GRID
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Padding="0"
+                    CornerRadius="12"
+                    ClipToBounds="True">
+
+                <StackPanel Spacing="0">
+
+                    <!-- Empty State -->
+                    <Border Classes="loading-pulse"
+                            IsVisible="{Binding !ScanHistory.Count}"
+                            CornerRadius="12"
+                            Padding="48"
+                            Margin="16">
+                        <StackPanel HorizontalAlignment="Center"
+                                    Spacing="12">
+                            <TextBlock Text="&#x1F4CB;"
+                                       FontSize="48"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="No scan history yet"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="Run your first scan to see results here."
+                                       Classes="caption"
+                                       FontSize="14"
+                                       HorizontalAlignment="Center"
+                                       MaxWidth="320"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Data Grid -->
+                    <DataGrid ItemsSource="{Binding ScanHistory}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              GridLinesVisibility="Horizontal"
+                              HorizontalGridLinesBrush="{StaticResource BorderSubtleBrush}"
+                              CanUserResizeColumns="True"
+                              CanUserSortColumns="True"
+                              SelectionMode="Single"
+                              SelectedItem="{Binding SelectedScan}"
+                              MinHeight="300"
+                              Margin="0"
+                              AutomationProperties.Name="Scan History Data Grid"
+                              TabIndex="50">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date"
+                                                Binding="{Binding StartTime, StringFormat='{}{0:yyyy-MM-dd HH:mm}'}"
+                                                Width="155" />
+                            <DataGridTextColumn Header="Target"
+                                                Binding="{Binding Target.Host}"
+                                                Width="180" />
+                            <DataGridTextColumn Header="Ports Scanned"
+                                                Binding="{Binding TotalPortsScanned}"
+                                                Width="115" />
+                            <DataGridTextColumn Header="Open Ports"
+                                                Binding="{Binding OpenPortsFound}"
+                                                Width="100" />
+                            <DataGridTemplateColumn Header="Status"
+                                                    Width="110">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate DataType="{x:Type models:ScanSession}">
+                                        <Border CornerRadius="10"
+                                                Padding="10,3"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Status}"
+                                                       FontSize="11"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="#ffffff" />
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Duration"
+                                                Binding="{Binding Duration, StringFormat='{}{0:mm\\:ss\\.ff}'}"
+                                                Width="100" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Context Menu -->
+                    <DataGrid.ContextMenu>
+                        <ContextMenu AutomationProperties.Name="Scan History Context Menu">
+                            <MenuItem Header="View Details"
+                                      Command="{Binding ViewDetailsCommand}"
+                                      AutomationProperties.Name="View Scan Details"
+                                      TabIndex="51" />
+                            <MenuItem Header="Export"
+                                      Command="{Binding ExportScanCommand}"
+                                      AutomationProperties.Name="Export Scan Results"
+                                      TabIndex="52" />
+                            <MenuItem Header="Delete"
+                                      Command="{Binding DeleteScanCommand}"
+                                      AutomationProperties.Name="Delete Scan"
+                                      TabIndex="53" />
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 PAGINATION CONTROLS
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="panel"
+                    Margin="0,12,0,0"
+                    Padding="12,10"
+                    CornerRadius="8"
+                    IsVisible="{Binding ScanHistory.Count}">
+                <Grid ColumnDefinitions="*,Auto,*">
+                    <TextBlock Grid.Column="0"
+                               Classes="caption"
+                               FontSize="12"
+                               VerticalAlignment="Center"
+                               Margin="8,0,0,0">
+                        <TextBlock.Text>
+                            <Binding Path="ScanHistory.Count"
+                                     StringFormat="{}Showing {0} sessions" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                Spacing="6">
+                        <Button Classes="small ghost"
+                                Content="&#x25C0;  Previous"
+                                MinWidth="90"
+                                MinHeight="30"
+                                FontSize="12"
+                                IsEnabled="False"
+                                AutomationProperties.Name="Previous Page"
+                                TabIndex="54" />
+                        <TextBlock Classes="caption"
+                                   FontSize="12"
+                                   VerticalAlignment="Center"
+                                   Text="Page 1"
+                                   Margin="4,0" />
+                        <Button Classes="small ghost"
+                                Content="Next  &#x25B6;"
+                                MinWidth="70"
+                                MinHeight="30"
+                                FontSize="12"
+                                IsEnabled="False"
+                                AutomationProperties.Name="Next Page"
+                                TabIndex="55" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="2"
+                               Classes="caption"
+                               FontSize="12"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                </Grid>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

@@ -1,0 +1,39 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Run security analyzers
+      run: |
+        dotnet list package --vulnerable --include-transitive || true
+        echo "Security audit completed"
+
+    - name: Check for secrets in code
+      run: |
+        if grep -rn "password\|secret\|api[_-]key\|private[_-]key" --include="*.cs" --include="*.json" --include="*.yml" src/ | grep -v "//.*password\|//.*secret\|appsettings\."; then
+          echo "WARNING: Potential secrets found in source code"
+        else
+          echo "No obvious secrets found in source code"
+        fi

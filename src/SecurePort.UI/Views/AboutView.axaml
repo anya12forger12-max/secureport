@@ -1,0 +1,352 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SecurePort.UI.ViewModels"
+             x:Class="SecurePort.UI.Views.AboutView"
+             x:DataType="vm:AboutViewModel"
+             AutomationProperties.Name="About View">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="0"
+                    Margin="24,20,24,24"
+                    MaxWidth="680"
+                    HorizontalAlignment="Center">
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ABOUT CARD
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Padding="40,36"
+                    CornerRadius="16"
+                    HorizontalAlignment="Stretch">
+                <StackPanel Spacing="0"
+                            HorizontalAlignment="Center">
+
+                    <!-- App Icon / Logo -->
+                    <Border Background="{StaticResource PrimaryAccentBrush}"
+                            CornerRadius="20"
+                            Width="80"
+                            Height="80"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,0,20"
+                            BoxShadow="0 4px 24px #40e94560"
+                            AutomationProperties.Name="SecurePort Application Icon">
+                        <TextBlock Text="&#x1F512;"
+                                   FontSize="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+
+                    <!-- App Name -->
+                    <TextBlock Text="{Binding AppName}"
+                               Classes="heading"
+                               FontSize="36"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,8"
+                               AutomationProperties.Name="Application Name" />
+
+                    <!-- Version -->
+                    <Border Classes="badge"
+                            CornerRadius="12"
+                            Padding="14,5"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,0,20"
+                            Background="{StaticResource SecondaryAccentBrush}">
+                        <TextBlock FontSize="13"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextOnAccentBrush}">
+                            <TextBlock.Text>
+                                <Binding Path="Version"
+                                         StringFormat="Version {}" />
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Border>
+
+                    <!-- Tagline -->
+                    <TextBlock Text="Advanced Defensive Network Security Scanner"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="{StaticResource PrimaryAccentBrush}"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,24"
+                               TextAlignment="Center"
+                               AutomationProperties.Name="Application Tagline" />
+
+                    <Separator Margin="0,0,0,24" />
+
+                    <!-- Description -->
+                    <TextBlock Text="{Binding Description}"
+                               FontSize="14"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               LineHeight="22"
+                               Margin="0,0,0,28"
+                               MaxWidth="500"
+                               HorizontalAlignment="Center" />
+
+                    <!-- ═══════════════════════════════════════════════
+                         PRIVACY GUARANTEE
+                         ═══════════════════════════════════════════════ -->
+                    <Border Classes="section"
+                            CornerRadius="10"
+                            Padding="20"
+                            Margin="0,0,0,24"
+                            BorderBrush="{StaticResource SuccessBrush}"
+                            Background="{StaticResource SuccessSubtleBrush}">
+                        <StackPanel Spacing="8"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="&#x1F6E1;  Your Privacy is Protected"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource SuccessBrush}"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding PrivacyNotice}"
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       LineHeight="20"
+                                       MaxWidth="440"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="All data stays on your device. No telemetry. No tracking. No cloud."
+                                       FontSize="12"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource SuccessBrush}"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,4,0,0"
+                                       TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- ═══════════════════════════════════════════════
+                         LEGAL NOTICE
+                         ═══════════════════════════════════════════════ -->
+                    <Border Classes="section"
+                            CornerRadius="10"
+                            Padding="16"
+                            Margin="0,0,0,24"
+                            BorderBrush="{StaticResource BorderBrush}">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Legal Notice"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" />
+                            <TextBlock Text="This software is provided as-is for authorized security testing purposes only. Users are responsible for ensuring they have proper authorization before scanning any network or system. Unauthorized scanning may violate local laws and regulations."
+                                       FontSize="12"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       TextWrapping="Wrap"
+                                       LineHeight="18" />
+                            <Grid ColumnDefinitions="Auto,*"
+                                  Margin="0,8,0,0">
+                                <TextBlock Text="License:"
+                                           FontSize="12"
+                                           FontWeight="Medium"
+                                           Foreground="{StaticResource TextSecondaryBrush}"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding License}"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="{StaticResource PrimaryAccentBrush}"
+                                           Margin="6,0,0,0"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- ═══════════════════════════════════════════════
+                         OPEN SOURCE CREDITS
+                         ═══════════════════════════════════════════════ -->
+                    <Border Classes="section"
+                            CornerRadius="10"
+                            Padding="16"
+                            Margin="0,0,0,24"
+                            BorderBrush="{StaticResource BorderBrush}">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="Open Source Credits"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" />
+                            <StackPanel Spacing="0">
+                                <Border Padding="8,8"
+                                        CornerRadius="6"
+                                        Background="{StaticResource SecondaryBackgroundBrush}">
+                                    <Grid ColumnDefinitions="Auto,*,Auto"
+                                          RowDefinitions="Auto"
+                                          ColumnSpacing="12">
+                                        <Border Background="{StaticResource PrimaryAccentSubtleBrush}"
+                                                CornerRadius="6"
+                                                Width="32"
+                                                Height="32">
+                                            <TextBlock Text="A"
+                                                       FontSize="14"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{StaticResource PrimaryAccentBrush}" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="Avalonia UI"
+                                                       FontSize="13"
+                                                       FontWeight="SemiBold" />
+                                            <TextBlock Text="Cross-platform .NET UI framework"
+                                                       Classes="caption"
+                                                       FontSize="11" />
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2"
+                                                   Text="MIT"
+                                                   Classes="caption"
+                                                   FontSize="10"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,4,0" />
+                                    </Grid>
+                                </Border>
+
+                                <Border Padding="8,8"
+                                        CornerRadius="6"
+                                        Margin="0,4,0,0">
+                                    <Grid ColumnDefinitions="Auto,*,Auto"
+                                          RowDefinitions="Auto"
+                                          ColumnSpacing="12">
+                                        <Border Background="{StaticResource SecondaryAccentSubtleBrush}"
+                                                CornerRadius="6"
+                                                Width="32"
+                                                Height="32">
+                                            <TextBlock Text="C"
+                                                       FontSize="14"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{StaticResource SecondaryAccentBrush}" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="CommunityToolkit.Mvvm"
+                                                       FontSize="13"
+                                                       FontWeight="SemiBold" />
+                                            <TextBlock Text="MVVM helper library for .NET"
+                                                       Classes="caption"
+                                                       FontSize="11" />
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2"
+                                                   Text="MIT"
+                                                   Classes="caption"
+                                                   FontSize="10"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,4,0" />
+                                    </Grid>
+                                </Border>
+
+                                <Border Padding="8,8"
+                                        CornerRadius="6"
+                                        Margin="0,4,0,0"
+                                        Background="{StaticResource SecondaryBackgroundBrush}">
+                                    <Grid ColumnDefinitions="Auto,*,Auto"
+                                          RowDefinitions="Auto"
+                                          ColumnSpacing="12">
+                                        <Border Background="{StaticResource SuccessSubtleBrush}"
+                                                CornerRadius="6"
+                                                Width="32"
+                                                Height="32">
+                                            <TextBlock Text="F"
+                                                       FontSize="14"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{StaticResource SuccessBrush}" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="Fluent Theme"
+                                                       FontSize="13"
+                                                       FontWeight="SemiBold" />
+                                            <TextBlock Text="Modern design system for Avalonia"
+                                                       Classes="caption"
+                                                       FontSize="11" />
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2"
+                                                   Text="MIT"
+                                                   Classes="caption"
+                                                   FontSize="10"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,4,0" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- ═══════════════════════════════════════════════
+                         BUILT WITH
+                         ═══════════════════════════════════════════════ -->
+                    <StackPanel Spacing="6"
+                                HorizontalAlignment="Center"
+                                Margin="8,0,0,0">
+                        <TextBlock Text="Built with"
+                                   Classes="caption"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center" />
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="16"
+                                    HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="6">
+                                <TextBlock Text="&#x26A1;"
+                                           FontSize="14"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text="Avalonia UI"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="{StaticResource SecondaryAccentBrush}"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                            <TextBlock Text="•"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="6">
+                                <TextBlock Text="&#x1F4E6;"
+                                           FontSize="14"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text=".NET 6"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="{StaticResource SecondaryAccentBrush}"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                            <TextBlock Text="•"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="6">
+                                <TextBlock Text="&#x1F310;"
+                                           FontSize="14"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text="Cross-Platform"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="{StaticResource SecondaryAccentBrush}"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <!-- Footer -->
+            <TextBlock Text="&#xA9; 2024 SecurePort. All rights reserved."
+                       Classes="caption"
+                       FontSize="11"
+                       HorizontalAlignment="Center"
+                       Margin="0,16,0,0" />
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

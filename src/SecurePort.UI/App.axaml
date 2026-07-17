@@ -1,0 +1,10 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="SecurePort.UI.App"
+             RequestedThemeVariant="Dark">
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://SecurePort.UI/Assets/Themes/ThemeColors.axaml"/>
+        <StyleInclude Source="avares://SecurePort.UI/Assets/Themes/GlobalStyles.axaml"/>
+    </Application.Styles>
+</Application>

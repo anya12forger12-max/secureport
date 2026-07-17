@@ -1,0 +1,128 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dialogs="using:SecurePort.UI.Dialogs"
+             x:Class="SecurePort.UI.Dialogs.LegalConsentDialog"
+             x:DataType="dialogs:LegalConsentDialog"
+             IsVisible="{Binding IsVisible}"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             AutomationProperties.Name="Legal Consent Dialog">
+
+    <Grid IsVisible="{Binding IsOpen}">
+        <!-- Overlay -->
+        <Border Classes="dialog-overlay"
+                Tapped="OnOverlayTapped"
+                Background="{StaticResource OverlayBrush}"
+                Grid.RowSpan="2" />
+
+        <!-- Dialog -->
+        <Border Classes="dialog"
+                Grid.Row="0"
+                MaxWidth="520"
+                MinWidth="380"
+                Padding="32"
+                Background="{StaticResource CardBackgroundBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="16"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                IsHitTestVisible="True"
+                AutomationProperties.Name="Legal Consent Dialog Panel">
+
+            <StackPanel Spacing="0">
+
+                <!-- Header Section -->
+                <StackPanel Grid.Row="0"
+                            Spacing="16"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,0,24">
+
+                    <!-- Shield Icon -->
+                    <Border Background="{StaticResource PrimaryAccentSubtleBrush}"
+                            CornerRadius="32"
+                            Width="64"
+                            Height="64"
+                            HorizontalAlignment="Center"
+                            AutomationProperties.Name="Security Shield Icon">
+                        <TextBlock Text="&#x1F6E1;"
+                                   FontSize="30"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   AutomationProperties.Name="Shield" />
+                    </Border>
+
+                    <!-- Title -->
+                    <TextBlock Text="Authorization Required"
+                               Classes="title"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Foreground="{StaticResource TextPrimaryBrush}"
+                               AutomationProperties.Name="Authorization Required Heading" />
+                </StackPanel>
+
+                <!-- Legal Text -->
+                <Border Background="{StaticResource SecondaryBackgroundBrush}"
+                        CornerRadius="10"
+                        Padding="20"
+                        Margin="0,0,0,24"
+                        BorderBrush="{StaticResource BorderSubtleBrush}"
+                        BorderThickness="1"
+                        AutomationProperties.Name="Legal Disclaimer Text">
+                    <TextBlock Text="This application is intended only for systems and networks you own or are explicitly authorized to assess. Unauthorized scanning may violate laws, organizational policies, or service agreements. By continuing, you confirm that you have permission to scan the specified target."
+                               FontSize="13"
+                               TextWrapping="Wrap"
+                               LineHeight="20"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               AutomationProperties.Name="Legal Consent Notice" />
+                </Border>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="2"
+                            Spacing="12"
+                            HorizontalAlignment="Stretch"
+                            Margin="0,0,0,0">
+
+                    <!-- Accept Button -->
+                    <Button Classes="primary"
+                            HorizontalAlignment="Stretch"
+                            MinHeight="44"
+                            Command="{Binding AcceptCommand}"
+                            Content="Accept"
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            AutomationProperties.Name="Accept Legal Consent" />
+
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+
+                        <!-- Cancel Button -->
+                        <Button Classes="secondary"
+                                Grid.Column="0"
+                                HorizontalAlignment="Stretch"
+                                MinHeight="40"
+                                Command="{Binding CancelCommand}"
+                                Content="Cancel"
+                                FontSize="13"
+                                AutomationProperties.Name="Cancel and Abort Scan" />
+
+                        <!-- Remember for Session -->
+                        <Button Classes="ghost"
+                                Grid.Column="1"
+                                HorizontalAlignment="Stretch"
+                                MinHeight="40"
+                                Command="{Binding RememberForSessionCommand}"
+                                Content="Remember for this Session"
+                                FontSize="13"
+                                AutomationProperties.Name="Accept and Remember for This Session" />
+                    </Grid>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

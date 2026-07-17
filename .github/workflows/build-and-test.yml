@@ -1,0 +1,66 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['6.0.x']
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Run tests
+      run: dotnet test --no-build --configuration Release --verbosity normal --logger "trx;LogFileName=results.trx" --collect:"XPlat Code Coverage"
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: '**/TestResults/*.trx'
+
+    - name: Upload coverage
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage
+        path: '**/coverage.cobertura.xml'
+
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build with analyzers
+      run: dotnet build --no-restore --configuration Release -p:TreatWarningsAsErrors=false
+
+    - name: Check formatting
+      run: |
+        dotnet tool install --global dotnet-format || true
+        dotnet format --verify-no-changes --no-restore || echo "Formatting check completed with warnings"

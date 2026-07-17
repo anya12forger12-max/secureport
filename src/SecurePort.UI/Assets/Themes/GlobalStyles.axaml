@@ -1,0 +1,1020 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         WINDOW
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Window">
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="TransparencyLevelHint" Value="AcrylicBlur"/>
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
+        <Setter Property="ExtendClientAreaChromeHints" Value="PreferSystemChrome"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TEXT BLOCK
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="TextBlock">
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style Selector="TextBlock.heading">
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.subheading">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.title">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.caption">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.accent">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.success">
+        <Setter Property="Foreground" Value="{StaticResource SuccessBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.warning">
+        <Setter Property="Foreground" Value="{StaticResource WarningBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.error">
+        <Setter Property="Foreground" Value="{StaticResource ErrorBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.info">
+        <Setter Property="Foreground" Value="{StaticResource InfoBrush}"/>
+    </Style>
+
+    <Style Selector="TextBlock.mono">
+        <Setter Property="FontFamily" Value="Cascadia Code, JetBrains Mono, Consolas, monospace"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TEXTBOX
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="CaretBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+        <Setter Property="WatermarkForeground" Value="{StaticResource TextSecondaryBrush}"/>
+    </Style>
+
+    <Style Selector="TextBox:pointerover">
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="TextBox:focus">
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+    </Style>
+
+    <Style Selector="TextBox:disabled">
+        <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DisabledBorderColor}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <Style Selector="TextBox.error">
+        <Setter Property="BorderBrush" Value="{StaticResource ErrorBrush}"/>
+    </Style>
+
+    <Style Selector="TextBox.success">
+        <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}"/>
+    </Style>
+
+    <!-- Search textbox variant -->
+    <Style Selector="TextBox.search">
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Padding" Value="16,10"/>
+        <Setter Property="MinHeight" Value="42"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         BUTTON
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16,10"/>
+        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
+    </Style>
+
+    <Style Selector="Button:pressed">
+        <Setter Property="Background" Value="{StaticResource SurfaceBackgroundBrush}"/>
+    </Style>
+
+    <Style Selector="Button:disabled">
+        <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DisabledBorderColor}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+        <Setter Property="Cursor" Value="NotAllowed"/>
+    </Style>
+
+    <Style Selector="Button:focus">
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <!-- Primary Button -->
+    <Style Selector="Button.primary">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style Selector="Button.primary:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentHoverBrush}"/>
+    </Style>
+
+    <Style Selector="Button.primary:pressed">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentPressedBrush}"/>
+    </Style>
+
+    <Style Selector="Button.primary:disabled">
+        <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <!-- Secondary Button -->
+    <Style Selector="Button.secondary">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource SecondaryAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryAccentBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style Selector="Button.secondary:pointerover">
+        <Setter Property="Background" Value="{StaticResource SecondaryAccentSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="Button.secondary:pressed">
+        <Setter Property="Background" Value="{StaticResource SecondaryAccentHoverBrush}"/>
+    </Style>
+
+    <Style Selector="Button.secondary:disabled">
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DisabledBorderColor}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <!-- Danger Button -->
+    <Style Selector="Button.danger">
+        <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style Selector="Button.danger:pointerover">
+        <Setter Property="Background" Value="#ff6b6b"/>
+    </Style>
+
+    <Style Selector="Button.danger:pressed">
+        <Setter Property="Background" Value="#e53e3e"/>
+    </Style>
+
+    <Style Selector="Button.danger:disabled">
+        <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <!-- Ghost Button (minimal, no border) -->
+    <Style Selector="Button.ghost">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="12,8"/>
+    </Style>
+
+    <Style Selector="Button.ghost:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="Button.ghost:pressed">
+        <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
+    </Style>
+
+    <Style Selector="Button.ghost:disabled">
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <!-- Icon Button -->
+    <Style Selector="Button.icon">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="MinWidth" Value="36"/>
+        <Setter Property="MinHeight" Value="36"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="Button.icon:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="Button.icon:pressed">
+        <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
+    </Style>
+
+    <Style Selector="Button.icon:disabled">
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="Opacity" Value="0.4"/>
+    </Style>
+
+    <!-- Small Button -->
+    <Style Selector="Button.small">
+        <Setter Property="Padding" Value="10,6"/>
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+
+    <!-- Large Button -->
+    <Style Selector="Button.large">
+        <Setter Property="Padding" Value="24,14"/>
+        <Setter Property="MinHeight" Value="48"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         LIST BOX / LIST BOX ITEM
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <Style Selector="ListBoxItem">
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="Margin" Value="0,1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinHeight" Value="44"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:pointerover">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:selected:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentHoverBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:disabled">
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SCROLL BAR (Thin custom scrollbar)
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ScrollViewer">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style Selector="ScrollBar">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style Selector="ScrollBar:horizontal /template/ Thumb">
+        <Setter Property="MinWidth" Value="40"/>
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbBrush}"/>
+    </Style>
+
+    <Style Selector="ScrollBar:horizontal /template/ Thumb:pointerover">
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbHoverBrush}"/>
+        <Setter Property="Height" Value="8"/>
+    </Style>
+
+    <Style Selector="ScrollBar:vertical /template/ Thumb">
+        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="Width" Value="6"/>
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbBrush}"/>
+    </Style>
+
+    <Style Selector="ScrollBar:vertical /template/ Thumb:pointerover">
+        <Setter Property="Background" Value="{StaticResource ScrollBarThumbHoverBrush}"/>
+        <Setter Property="Width" Value="8"/>
+    </Style>
+
+    <Style Selector="ScrollBar:horizontal /template/ RepeatButton">
+        <Setter Property="Width" Value="0"/>
+    </Style>
+
+    <Style Selector="ScrollBar:vertical /template/ RepeatButton">
+        <Setter Property="Height" Value="0"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         PROGRESS BAR
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ProgressBar">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="8"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+    <Style Selector="ProgressBar:horizontal /template/ Border#PART_Indicator">
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+    <Style Selector="ProgressBar.success">
+        <Setter Property="Foreground" Value="{StaticResource SuccessBrush}"/>
+    </Style>
+
+    <Style Selector="ProgressBar.warning">
+        <Setter Property="Foreground" Value="{StaticResource WarningBrush}"/>
+    </Style>
+
+    <Style Selector="ProgressBar.error">
+        <Setter Property="Foreground" Value="{StaticResource ErrorBrush}"/>
+    </Style>
+
+    <Style Selector="ProgressBar.infinite:horizontal /template/ Border#PART_Indicator">
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+    <!-- Indeterminate / animated variant -->
+    <Style Selector="ProgressBar:indeterminate">
+        <Setter Property="Opacity" Value="0.9"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         BORDER (Card style)
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Border.card">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Margin" Value="8"/>
+    </Style>
+
+    <Style Selector="Border.card:hover">
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="Border.panel">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+
+    <Style Selector="Border.section">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderSubtleBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+
+    <Style Selector="Border.status-success">
+        <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}"/>
+        <Setter Property="Background" Value="{StaticResource SuccessSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="Border.status-warning">
+        <Setter Property="BorderBrush" Value="{StaticResource WarningBrush}"/>
+        <Setter Property="Background" Value="{StaticResource WarningSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="Border.status-error">
+        <Setter Property="BorderBrush" Value="{StaticResource ErrorBrush}"/>
+        <Setter Property="Background" Value="{StaticResource ErrorSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="Border.status-info">
+        <Setter Property="BorderBrush" Value="{StaticResource InfoBrush}"/>
+        <Setter Property="Background" Value="{StaticResource InfoSubtleBrush}"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TOGGLE SWITCH
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ToggleSwitch">
+        <Setter Property="OnBackground" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="OffBackground" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="ThumbBackground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="MinWidth" Value="48"/>
+        <Setter Property="MinHeight" Value="26"/>
+    </Style>
+
+    <Style Selector="ToggleSwitch:pointerover /template/ Border#PART_SwitchBackground">
+        <Setter Property="Opacity" Value="0.85"/>
+    </Style>
+
+    <Style Selector="ToggleSwitch:disabled">
+        <Setter Property="Opacity" Value="0.45"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         COMBO BOX
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="MaxDropDownHeight" Value="300"/>
+    </Style>
+
+    <Style Selector="ComboBox:pointerover">
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="ComboBox:focus">
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="ComboBox:disabled">
+        <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DisabledBorderColor}"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinHeight" Value="36"/>
+    </Style>
+
+    <Style Selector="ComboBoxItem:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="ComboBoxItem:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TAB CONTROL / TAB ITEM
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="TabControl">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <Style Selector="TabItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Padding" Value="20,12"/>
+        <Setter Property="MinHeight" Value="44"/>
+        <Setter Property="CornerRadius" Value="8,8,0,0"/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="TabItem:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+    </Style>
+
+    <Style Selector="TabItem:selected">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style Selector="TabItem:disabled">
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+
+    <!-- Underline indicator style for selected tab -->
+    <Style Selector="TabItem.selected /template/ Border#PART_BorderUnderline">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="Height" Value="3"/>
+        <Setter Property="CornerRadius" Value="1.5,1.5,0,0"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TOOLTIP
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ToolTip">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="MaxWidth" Value="320"/>
+        <Setter Property="Placement" Value="Right"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         PANELS / SPACING UTILITIES
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="StackPanel.spacing-xs">
+        <Setter Property="Spacing" Value="4"/>
+    </Style>
+
+    <Style Selector="StackPanel.spacing-sm">
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+
+    <Style Selector="StackPanel.spacing-md">
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+
+    <Style Selector="StackPanel.spacing-lg">
+        <Setter Property="Spacing" Value="24"/>
+    </Style>
+
+    <Style Selector="StackPanel.spacing-xl">
+        <Setter Property="Spacing" Value="32"/>
+    </Style>
+
+    <Style Selector="WrapPanel.spacing-sm">
+        <Setter Property="ItemWidth" Value="NaN"/>
+    </Style>
+
+    <Style Selector="UniformGrid.spacing-sm">
+        <Setter Property="Rows" Value="0"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DIALOG OVERLAY
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Border.dialog-overlay">
+        <Setter Property="Background" Value="{StaticResource OverlayBrush}"/>
+        <Setter Property="IsHitTestVisible" Value="True"/>
+    </Style>
+
+    <Style Selector="Border.dialog">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="16"/>
+        <Setter Property="Padding" Value="32"/>
+        <Setter Property="MaxWidth" Value="520"/>
+        <Setter Property="MinWidth" Value="340"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="Border.dialog-header">
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+
+    <Style Selector="Border.dialog-footer">
+        <Setter Property="Margin" Value="0,24,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SEPARATOR
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Separator">
+        <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="Height" Value="1"/>
+        <Setter Property="Margin" Value="0,8"/>
+    </Style>
+
+    <Style Selector="Separator.thick">
+        <Setter Property="Height" Value="2"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         CHECKBOX
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="CheckBox">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinHeight" Value="32"/>
+        <Setter Property="Margin" Value="0,2"/>
+    </Style>
+
+    <Style Selector="CheckBox:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="CheckBox:checked /template/ Border#checkIconBorder">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="CheckBox:disabled">
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         RADIO BUTTON
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="RadioButton">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinHeight" Value="32"/>
+        <Setter Property="Margin" Value="0,2"/>
+    </Style>
+
+    <Style Selector="RadioButton:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="RadioButton:disabled">
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SLIDER
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Slider">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="MinHeight" Value="36"/>
+    </Style>
+
+    <Style Selector="Slider:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentHoverBrush}"/>
+    </Style>
+
+    <Style Selector="Slider:disabled">
+        <Setter Property="Opacity" Value="0.45"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DATE PICKER / TIME PICKER
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="DatePicker">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+    </Style>
+
+    <Style Selector="DatePicker:pointerover">
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="DatePicker:focus">
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="DatePicker:disabled">
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         MENU / MENU ITEM
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Menu">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <Style Selector="MenuItem">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="16,10"/>
+        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+
+    <Style Selector="MenuItem:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="MenuItem:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
+    </Style>
+
+    <Style Selector="MenuItem:disabled">
+        <Setter Property="Foreground" Value="{StaticResource DisabledTextBrush}"/>
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         EXPANDER
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Expander">
+        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Margin" Value="0,4"/>
+    </Style>
+
+    <Style Selector="Expander:pointerover">
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryAccentBrush}"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         IMAGE
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Image">
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SCROLLVIEWER
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="ScrollViewer">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style Selector="ScrollViewer:focus">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DATA GRID
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="DataGrid">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="RowBackground" Value="Transparent"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource BorderSubtleBrush}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+
+    <Style Selector="DataGridCell">
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="DataGridCell:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+    </Style>
+
+    <Style Selector="DataGridRow:pointerover">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+    </Style>
+
+    <Style Selector="DataGridRow:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         NOTIFICATION / BADGE
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Border.badge">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="Border.badge-success">
+        <Setter Property="Background" Value="{StaticResource SuccessBrush}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+    </Style>
+
+    <Style Selector="Border.badge-warning">
+        <Setter Property="Background" Value="{StaticResource WarningBrush}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+    </Style>
+
+    <Style Selector="Border.badge-error">
+        <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+    </Style>
+
+    <Style Selector="Border.badge-info">
+        <Setter Property="Background" Value="{StaticResource InfoBrush}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         LOADING / SPINNER
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Border.spinner">
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="CornerRadius" Value="16"/>
+    </Style>
+
+    <Style Selector="Border.loading-pulse">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="24"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         NAVIGATION / SIDEBAR
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="Border.nav-item">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="Margin" Value="4,2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Border.nav-item:pointerover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+    </Style>
+
+    <Style Selector="Border.nav-item:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <Style Selector="Border.sidebar">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+        <Setter Property="Padding" Value="8"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SPLITTER
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="GridSplitter">
+        <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="GridSplitter:hover">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TREEVIEW
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <Style Selector="TreeView">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </Style>
+
+    <Style Selector="TreeViewItem">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Padding" Value="8,6"/>
+        <Setter Property="Margin" Value="0,1"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
+    </Style>
+
+    <Style Selector="TreeViewItem:pointerover">
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+    </Style>
+
+    <Style Selector="TreeViewItem:selected">
+        <Setter Property="Background" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryAccentBrush}"/>
+    </Style>
+
+</Styles>

@@ -1,0 +1,304 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SecurePort.UI.ViewModels"
+             xmlns:models="using:SecurePort.Core.Models"
+             xmlns:enums="using:SecurePort.Core.Enums"
+             x:Class="SecurePort.UI.Views.DashboardView"
+             x:DataType="vm:DashboardViewModel"
+             AutomationProperties.Name="Dashboard View">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="0"
+                    Margin="24,20,24,24">
+
+            <!-- Welcome Header -->
+            <StackPanel Spacing="4"
+                        Margin="0,0,0,24">
+                <TextBlock Text="Network Security Dashboard"
+                           Classes="heading"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           AutomationProperties.Name="Dashboard Title" />
+                <TextBlock Text="Monitor and manage your network security scans"
+                           Classes="caption"
+                           FontSize="14"
+                           Margin="0,4,0,0" />
+            </StackPanel>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 STAT CARDS
+                 ═══════════════════════════════════════════════════════════════ -->
+            <WrapPanel Margin="0,0,0,24"
+                       Orientation="Horizontal">
+
+                <!-- Total Scans -->
+                <Border Classes="card"
+                        Width="220"
+                        Margin="0,0,12,12"
+                        Padding="20"
+                        CornerRadius="12">
+                    <Grid RowDefinitions="Auto,8,Auto,Auto">
+                        <Border Background="{StaticResource SecondaryAccentSubtleBrush}"
+                                CornerRadius="10"
+                                Width="44"
+                                Height="44"
+                                HorizontalAlignment="Left">
+                            <TextBlock Text="&#x1F50D;"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <TextBlock Grid.Row="2"
+                                   Text="{Binding TotalScans}"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource TextPrimaryBrush}"
+                                   Margin="0,4,0,0"
+                                   AutomationProperties.Name="Total Scans Count" />
+                        <TextBlock Grid.Row="3"
+                                   Text="Total Scans"
+                                   Classes="label"
+                                   FontSize="12"
+                                   Margin="0,2,0,0" />
+                    </Grid>
+                </Border>
+
+                <!-- Open Ports Found -->
+                <Border Classes="card"
+                        Width="220"
+                        Margin="0,0,12,12"
+                        Padding="20"
+                        CornerRadius="12">
+                    <Grid RowDefinitions="Auto,8,Auto,Auto">
+                        <Border Background="{StaticResource PrimaryAccentSubtleBrush}"
+                                CornerRadius="10"
+                                Width="44"
+                                Height="44"
+                                HorizontalAlignment="Left">
+                            <TextBlock Text="&#x1F513;"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <TextBlock Grid.Row="2"
+                                   Text="{Binding OpenPorts}"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource PrimaryAccentBrush}"
+                                   Margin="0,4,0,0"
+                                   AutomationProperties.Name="Open Ports Found Count" />
+                        <TextBlock Grid.Row="3"
+                                   Text="Open Ports Found"
+                                   Classes="label"
+                                   FontSize="12"
+                                   Margin="0,2,0,0" />
+                    </Grid>
+                </Border>
+
+                <!-- Last Scan -->
+                <Border Classes="card"
+                        Width="220"
+                        Margin="0,0,12,12"
+                        Padding="20"
+                        CornerRadius="12">
+                    <Grid RowDefinitions="Auto,8,Auto,Auto">
+                        <Border Background="{StaticResource SuccessSubtleBrush}"
+                                CornerRadius="10"
+                                Width="44"
+                                Height="44"
+                                HorizontalAlignment="Left">
+                            <TextBlock Text="&#x23F1;"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <TextBlock Grid.Row="2"
+                                   Text="{Binding LastScanDate}"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource SuccessBrush}"
+                                   Margin="0,4,0,0"
+                                   MaxWidth="180"
+                                   TextTrimming="CharacterEllipsis"
+                                   AutomationProperties.Name="Last Scan Date" />
+                        <TextBlock Grid.Row="3"
+                                   Text="Last Scan"
+                                   Classes="label"
+                                   FontSize="12"
+                                   Margin="0,2,0,0" />
+                    </Grid>
+                </Border>
+
+                <!-- Active Targets -->
+                <Border Classes="card"
+                        Width="220"
+                        Margin="0,0,12,12"
+                        Padding="20"
+                        CornerRadius="12">
+                    <Grid RowDefinitions="Auto,8,Auto,Auto">
+                        <Border Background="{StaticResource WarningSubtleBrush}"
+                                CornerRadius="10"
+                                Width="44"
+                                Height="44"
+                                HorizontalAlignment="Left">
+                            <TextBlock Text="&#x1F310;"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <TextBlock Grid.Row="2"
+                                   Text="{Binding ActiveTargets}"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource WarningBrush}"
+                                   Margin="0,4,0,0"
+                                   AutomationProperties.Name="Active Targets Count" />
+                        <TextBlock Grid.Row="3"
+                                   Text="Active Targets"
+                                   Classes="label"
+                                   FontSize="12"
+                                   Margin="0,2,0,0" />
+                    </Grid>
+                </Border>
+
+            </WrapPanel>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 QUICK ACTIONS
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Margin="0,0,0,20"
+                    Padding="20"
+                    CornerRadius="12">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Quick Actions"
+                               Classes="title"
+                               FontWeight="SemiBold"
+                               FontSize="16"
+                               Margin="0,0,0,4" />
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="12">
+                        <Button Classes="primary"
+                                Content="&#x2295;  New Scan"
+                                Command="{Binding QuickScanCommand}"
+                                MinWidth="140"
+                                MinHeight="42"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                AutomationProperties.Name="Start a New Scan"
+                                TabIndex="1" />
+                        <Button Classes="secondary"
+                                Content="&#x2630;  View History"
+                                Command="{Binding ViewHistoryCommand}"
+                                MinWidth="140"
+                                MinHeight="42"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                AutomationProperties.Name="View Scan History"
+                                TabIndex="2" />
+                        <Button Classes="ghost"
+                                Content="&#x21BB;  Refresh"
+                                Command="{Binding RefreshCommand}"
+                                MinWidth="110"
+                                MinHeight="42"
+                                FontSize="14"
+                                AutomationProperties.Name="Refresh Dashboard Data"
+                                TabIndex="3" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 RECENT SCANS
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Classes="card"
+                    Padding="20"
+                    CornerRadius="12">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Recent Scans"
+                               Classes="title"
+                               FontWeight="SemiBold"
+                               FontSize="16"
+                               Margin="0,0,0,4" />
+
+                    <Border Classes="loading-pulse"
+                            IsVisible="{Binding !RecentScans.Count}"
+                            CornerRadius="8"
+                            Padding="32">
+                        <StackPanel HorizontalAlignment="Center"
+                                    Spacing="8">
+                            <TextBlock Text="&#x1F4CB;"
+                                       FontSize="36"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="No recent scans"
+                                       Classes="caption"
+                                       FontSize="14"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="Start a scan to see results here"
+                                       Classes="caption"
+                                       FontSize="12"
+                                       HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <DataGrid ItemsSource="{Binding RecentScans}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              GridLinesVisibility="Horizontal"
+                              HorizontalGridLinesBrush="{StaticResource BorderSubtleBrush}"
+                              CanUserResizeColumns="True"
+                              CanUserSortColumns="True"
+                              MinHeight="200"
+                              MaxHeight="400"
+                              Margin="0,4,0,0"
+                              AutomationProperties.Name="Recent Scans List"
+                              TabIndex="4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date"
+                                                Binding="{Binding EndTime, StringFormat='{}{0:yyyy-MM-dd HH:mm}'}"
+                                                Width="150" />
+                            <DataGridTextColumn Header="Target"
+                                                Binding="{Binding Target.Host}"
+                                                Width="180" />
+                            <DataGridTextColumn Header="Ports Scanned"
+                                                Binding="{Binding TotalPortsScanned}"
+                                                Width="110" />
+                            <DataGridTextColumn Header="Open Ports"
+                                                Binding="{Binding OpenPortsFound}"
+                                                Width="100" />
+                            <DataGridTemplateColumn Header="Status"
+                                                    Width="110">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate DataType="{x:Type models:ScanSession}">
+                                        <Border CornerRadius="10"
+                                                Padding="10,4"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center">
+                                            <Border.Styles>
+                                                <Style Selector="Border">
+                                                    <Setter Property="Background"
+                                                            Value="{StaticResource SuccessBrush}" />
+                                                </Style>
+                                            </Border.Styles>
+                                            <TextBlock Text="{Binding Status}"
+                                                       FontSize="11"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="#ffffff" />
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Duration"
+                                                Binding="{Binding Duration, StringFormat='{}{0:mm\\:ss}'}"
+                                                Width="100" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

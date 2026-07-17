@@ -1,0 +1,560 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SecurePort.UI.ViewModels"
+             xmlns:models="using:SecurePort.Core.Models"
+             xmlns:enums="using:SecurePort.Core.Enums"
+             x:Class="SecurePort.UI.Views.ScanView"
+             x:DataType="vm:ScanViewModel"
+             AutomationProperties.Name="Scan View">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <Grid ColumnDefinitions="2*,3*"
+              Margin="24,20,24,24"
+              MinHeight="600">
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 LEFT COLUMN - Configuration Panel
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Grid.Column="0"
+                    Classes="card"
+                    Margin="0,0,12,0"
+                    Padding="24"
+                    CornerRadius="12"
+                    VerticalAlignment="Top">
+                <StackPanel Spacing="20">
+
+                    <TextBlock Text="Scan Configuration"
+                               Classes="title"
+                               FontWeight="SemiBold"
+                               FontSize="18"
+                               Margin="0,0,0,4" />
+
+                    <!-- Target Input -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Target"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <TextBox Watermark="Enter IP address or hostname"
+                                 Text="{Binding HostEntry}"
+                                 FontSize="14"
+                                 MinHeight="42"
+                                 AutomationProperties.Name="Scan Target Input"
+                                 TabIndex="10" />
+                    </StackPanel>
+
+                    <!-- Port Range -->
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Port Range"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <Grid ColumnDefinitions="*,Auto,*"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="8">
+
+                            <StackPanel Grid.Column="0"
+                                        Spacing="4">
+                                <TextBlock Text="Start"
+                                           Classes="caption"
+                                           FontSize="11" />
+                                <NumericUpDown Value="{Binding PortRangeStart}"
+                                               Minimum="1"
+                                               Maximum="65535"
+                                               Increment="1"
+                                               FormatString="N0"
+                                               FontSize="14"
+                                               MinHeight="42"
+                                               AutomationProperties.Name="Port Range Start"
+                                               TabIndex="11" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="—"
+                                       FontSize="18"
+                                       VerticalAlignment="Bottom"
+                                       Margin="0,0,0,8"
+                                       Foreground="{StaticResource TextSecondaryBrush}" />
+
+                            <StackPanel Grid.Column="2"
+                                        Spacing="4">
+                                <TextBlock Text="End"
+                                           Classes="caption"
+                                           FontSize="11" />
+                                <NumericUpDown Value="{Binding PortRangeEnd}"
+                                               Minimum="1"
+                                               Maximum="65535"
+                                               Increment="1"
+                                               FormatString="N0"
+                                               FontSize="14"
+                                               MinHeight="42"
+                                               AutomationProperties.Name="Port Range End"
+                                               TabIndex="12" />
+                            </StackPanel>
+
+                        </Grid>
+
+                        <!-- Quick Port Range Buttons -->
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="6"
+                                    Margin="0,4,0,0">
+                            <Button Classes="small secondary"
+                                    Content="Well-Known"
+                                    Tag="1-1023"
+                                    MinWidth="95"
+                                    MinHeight="30"
+                                    FontSize="11"
+                                    AutomationProperties.Name="Quick Select Well-Known Ports 1 to 1023"
+                                    TabIndex="13" />
+                            <Button Classes="small secondary"
+                                    Content="Registered"
+                                    Tag="1024-49151"
+                                    MinWidth="95"
+                                    MinHeight="30"
+                                    FontSize="11"
+                                    AutomationProperties.Name="Quick Select Registered Ports 1024 to 49151"
+                                    TabIndex="14" />
+                            <Button Classes="small secondary"
+                                    Content="All Ports"
+                                    Tag="1-65535"
+                                    MinWidth="80"
+                                    MinHeight="30"
+                                    FontSize="11"
+                                    AutomationProperties.Name="Quick Select All Ports 1 to 65535"
+                                    TabIndex="15" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Scan Type -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Scan Type"
+                                   Classes="label"
+                                   FontSize="13"
+                                   FontWeight="Medium" />
+                        <ComboBox SelectedIndex="0"
+                                  FontSize="14"
+                                  MinHeight="42"
+                                  AutomationProperties.Name="Scan Type Selection"
+                                  TabIndex="16">
+                            <ComboBoxItem Content="Connect Scan (TCP Full)" />
+                            <ComboBoxItem Content="SYN Scan (Half-Open)" />
+                            <ComboBoxItem Content="Ping Sweep (ICMP)" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Advanced Settings -->
+                    <Expander Header="Advanced Settings"
+                              FontSize="14"
+                              FontWeight="Medium"
+                              CornerRadius="8"
+                              Padding="16"
+                              Margin="0,4,0,0"
+                              TabIndex="17">
+                        <StackPanel Spacing="16"
+                                    Margin="0,8,0,0">
+
+                            <!-- Timeout -->
+                            <StackPanel Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="Timeout"
+                                               Classes="label"
+                                               FontSize="13"
+                                               FontWeight="Medium" />
+                                    <TextBlock Grid.Column="1"
+                                               Classes="caption"
+                                               FontSize="12"
+                                               Text="{Binding Timeout, StringFormat='{}{0} ms'}" />
+                                </Grid>
+                                <Slider Minimum="100"
+                                        Maximum="5000"
+                                        Value="{Binding Timeout}"
+                                        TickFrequency="100"
+                                        IsSnapToTickEnabled="False"
+                                        AutomationProperties.Name="Scan Timeout Slider"
+                                        TabIndex="18" />
+                            </StackPanel>
+
+                            <!-- Max Concurrent Connections -->
+                            <StackPanel Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="Max Concurrent Connections"
+                                               Classes="label"
+                                               FontSize="13"
+                                               FontWeight="Medium" />
+                                    <TextBlock Grid.Column="1"
+                                               Classes="caption"
+                                               FontSize="12"
+                                               Text="{Binding MaxConcurrent}" />
+                                </Grid>
+                                <Slider Minimum="1"
+                                        Maximum="1000"
+                                        Value="{Binding MaxConcurrent}"
+                                        TickFrequency="10"
+                                        IsSnapToTickEnabled="False"
+                                        AutomationProperties.Name="Max Concurrent Connections Slider"
+                                        TabIndex="19" />
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+
+                    <Separator Margin="0,4,0,0" />
+
+                    <!-- Action Buttons -->
+                    <StackPanel Spacing="10">
+                        <!-- Start Scan Button -->
+                        <Button Classes="primary large"
+                                Content="&#x25B6;  Start Scan"
+                                Command="{Binding StartScanCommand}"
+                                IsVisible="{Binding !IsScanning}"
+                                Width="100%"
+                                HorizontalAlignment="Stretch"
+                                MinHeight="48"
+                                FontSize="15"
+                                FontWeight="SemiBold"
+                                AutomationProperties.Name="Start Network Scan"
+                                TabIndex="20" />
+
+                        <!-- Cancel Scan Button -->
+                        <Button Classes="danger"
+                                Content="&#x2716;  Cancel Scan"
+                                Command="{Binding CancelScanCommand}"
+                                IsVisible="{Binding IsScanning}"
+                                Width="100%"
+                                HorizontalAlignment="Stretch"
+                                MinHeight="48"
+                                FontSize="15"
+                                FontWeight="SemiBold"
+                                AutomationProperties.Name="Cancel Current Scan"
+                                TabIndex="21" />
+
+                        <!-- Export Results Button -->
+                        <Button Classes="secondary"
+                                Content="&#x1F4BE;  Export Results"
+                                Command="{Binding ExportResultsCommand}"
+                                IsVisible="{Binding LastSession}"
+                                Width="100%"
+                                HorizontalAlignment="Stretch"
+                                MinHeight="44"
+                                FontSize="14"
+                                AutomationProperties.Name="Export Scan Results"
+                                TabIndex="22" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 RIGHT COLUMN - Results Panel
+                 ═══════════════════════════════════════════════════════════════ -->
+            <Border Grid.Column="1"
+                    Classes="card"
+                    Margin="12,0,0,0"
+                    Padding="24"
+                    CornerRadius="12"
+                    VerticalAlignment="Top">
+                <StackPanel Spacing="16">
+
+                    <TextBlock Text="Scan Results"
+                               Classes="title"
+                               FontWeight="SemiBold"
+                               FontSize="18"
+                               Margin="0,0,0,4" />
+
+                    <!-- ═══ PROGRESS SECTION (visible during scan) ═══ -->
+                    <Border Classes="loading-pulse"
+                            IsVisible="{Binding IsScanning}"
+                            CornerRadius="10"
+                            Padding="20"
+                            Margin="0,0,0,8">
+                        <StackPanel Spacing="14">
+
+                            <!-- Progress Bar -->
+                            <StackPanel Spacing="4">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Classes="label"
+                                               FontSize="13"
+                                               FontWeight="Medium">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="Scanning port {0} of {1}">
+                                                <Binding Path="Progress.CurrentPort" />
+                                                <Binding Path="Progress.TotalPorts" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Grid.Column="1"
+                                               Classes="caption"
+                                               FontSize="12">
+                                        <TextBlock.Text>
+                                            <Binding Path="Progress.PercentageComplete"
+                                                     StringFormat="{}{0:F1}%" />
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Grid>
+                                <ProgressBar Value="{Binding Progress.PercentageComplete}"
+                                             Minimum="0"
+                                             Maximum="100"
+                                             Height="10"
+                                             Margin="0,2,0,0"
+                                             AutomationProperties.Name="Scan Progress Bar" />
+                            </StackPanel>
+
+                            <!-- Time Info -->
+                            <Grid ColumnDefinitions="*,*"
+                                  RowDefinitions="Auto,Auto"
+                                  ColumnSpacing="20"
+                                  RowSpacing="6">
+                                <StackPanel Grid.Row="0"
+                                            Spacing="2">
+                                    <TextBlock Text="Elapsed Time"
+                                               Classes="caption"
+                                               FontSize="11" />
+                                    <TextBlock Classes="mono"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"
+                                               Foreground="{StaticResource TextPrimaryBrush}">
+                                        <TextBlock.Text>
+                                            <Binding Path="Progress.ElapsedTime"
+                                                     StringFormat="{}{0:mm\\:ss}" />
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="0"
+                                            Grid.Column="1"
+                                            Spacing="2">
+                                    <TextBlock Text="Est. Remaining"
+                                               Classes="caption"
+                                               FontSize="11" />
+                                    <TextBlock Classes="mono"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"
+                                               Foreground="{StaticResource TextPrimaryBrush}">
+                                        <TextBlock.Text>
+                                            <Binding Path="Progress.EstimatedTimeRemaining"
+                                                     StringFormat="{}{0:mm\\:ss}" />
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1"
+                                            Spacing="2">
+                                    <TextBlock Text="Open Ports"
+                                               Classes="caption"
+                                               FontSize="11" />
+                                    <TextBlock FontSize="18"
+                                               FontWeight="Bold"
+                                               Foreground="{StaticResource SuccessBrush}"
+                                               Text="{Binding OpenPortCount}" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1"
+                                            Grid.Column="1"
+                                            Spacing="2">
+                                    <TextBlock Text="Closed / Filtered"
+                                               Classes="caption"
+                                               FontSize="11" />
+                                    <Grid ColumnDefinitions="Auto,8,Auto">
+                                        <TextBlock FontSize="14"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{StaticResource ErrorBrush}"
+                                                   Text="{Binding ClosedPortCount}" />
+                                        <TextBlock Grid.Column="1"
+                                                   Text="/"
+                                                   Classes="caption"
+                                                   FontSize="14" />
+                                        <TextBlock Grid.Column="2"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{StaticResource WarningBrush}"
+                                                   Text="{Binding FilteredPortCount}" />
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+
+                        </StackPanel>
+                    </Border>
+
+                    <!-- ═══ SCAN SUMMARY (after scan completes) ═══ -->
+                    <Border Classes="section"
+                            IsVisible="{Binding LastSession}"
+                            CornerRadius="10"
+                            Padding="16"
+                            Margin="0,0,0,4"
+                            BorderBrush="{StaticResource BorderBrush}">
+                        <Grid ColumnDefinitions="*,*,*"
+                              RowDefinitions="Auto,Auto,Auto"
+                              ColumnSpacing="16"
+                              RowSpacing="8">
+                            <TextBlock Grid.Row="0"
+                                       Text="Scan Summary"
+                                       Classes="label"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"
+                                       Grid.ColumnSpan="3" />
+                            <StackPanel Grid.Row="1"
+                                        Spacing="2">
+                                <TextBlock Text="Target" Classes="caption" FontSize="11" />
+                                <TextBlock Classes="mono" FontSize="13"
+                                           Text="{Binding LastSession.Target.Host}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="1"
+                                        Spacing="2">
+                                <TextBlock Text="Duration" Classes="caption" FontSize="11" />
+                                <TextBlock Classes="mono" FontSize="13"
+                                           Text="{Binding LastSession.Duration, StringFormat='{}{0:mm\\:ss}'}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="2"
+                                        Spacing="2">
+                                <TextBlock Text="Total Ports" Classes="caption" FontSize="11" />
+                                <TextBlock Classes="mono" FontSize="13"
+                                           Text="{Binding LastSession.TotalPortsScanned}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="2"
+                                        Spacing="2">
+                                <TextBlock Text="Open" Classes="caption" FontSize="11" />
+                                <TextBlock FontSize="16" FontWeight="Bold"
+                                           Foreground="{StaticResource SuccessBrush}"
+                                           Text="{Binding OpenPortCount}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="2"
+                                        Grid.Column="1"
+                                        Spacing="2">
+                                <TextBlock Text="Closed" Classes="caption" FontSize="11" />
+                                <TextBlock FontSize="16" FontWeight="Bold"
+                                           Foreground="{StaticResource ErrorBrush}"
+                                           Text="{Binding ClosedPortCount}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="2"
+                                        Grid.Column="2"
+                                        Spacing="2">
+                                <TextBlock Text="Filtered" Classes="caption" FontSize="11" />
+                                <TextBlock FontSize="16" FontWeight="Bold"
+                                           Foreground="{StaticResource WarningBrush}"
+                                           Text="{Binding FilteredPortCount}" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- ═══ RESULTS TABLE ═══ -->
+                    <Border IsVisible="{Binding ScanResults.Count}"
+                            CornerRadius="8"
+                            BorderBrush="{StaticResource BorderSubtleBrush}"
+                            BorderThickness="1"
+                            Padding="0">
+                        <StackPanel Spacing="8">
+                            <!-- Filter Chips -->
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="6"
+                                        Margin="12,10,12,0">
+                                <TextBlock Text="Filter:"
+                                           Classes="caption"
+                                           FontSize="11"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,4,0" />
+                                <Button Classes="small primary"
+                                        Content="All"
+                                        MinWidth="50"
+                                        MinHeight="28"
+                                        FontSize="11" />
+                                <Button Classes="small ghost"
+                                        Content="Open"
+                                        MinWidth="50"
+                                        MinHeight="28"
+                                        FontSize="11"
+                                        Foreground="{StaticResource SuccessBrush}" />
+                                <Button Classes="small ghost"
+                                        Content="Closed"
+                                        MinWidth="50"
+                                        MinHeight="28"
+                                        FontSize="11"
+                                        Foreground="{StaticResource ErrorBrush}" />
+                                <Button Classes="small ghost"
+                                        Content="Filtered"
+                                        MinWidth="60"
+                                        MinHeight="28"
+                                        FontSize="11"
+                                        Foreground="{StaticResource WarningBrush}" />
+                            </StackPanel>
+
+                            <DataGrid ItemsSource="{Binding ScanResults}"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      GridLinesVisibility="Horizontal"
+                                      HorizontalGridLinesBrush="{StaticResource BorderSubtleBrush}"
+                                      CanUserResizeColumns="True"
+                                      CanUserSortColumns="True"
+                                      MinHeight="250"
+                                      MaxHeight="500"
+                                      Margin="0,4,0,0"
+                                      AutomationProperties.Name="Scan Results Table"
+                                      TabIndex="30">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Port"
+                                                        Binding="{Binding Port}"
+                                                        Width="80" />
+                                    <DataGridTemplateColumn Header="State"
+                                                            Width="100">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate DataType="{x:Type models:ScanResult}">
+                                                <Border CornerRadius="10"
+                                                        Padding="10,3"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        MinWidth="70">
+                                                    <Border.Background>
+                                                        <SolidColorBrush Color="{StaticResource SuccessColor}" />
+                                                    </Border.Background>
+                                                    <TextBlock Text="{Binding State}"
+                                                               FontSize="11"
+                                                               FontWeight="SemiBold"
+                                                               Foreground="#ffffff" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Service"
+                                                        Binding="{Binding ServiceName, TargetNullValue='—'}"
+                                                        Width="140" />
+                                    <DataGridTextColumn Header="Response Time"
+                                                        Binding="{Binding ResponseTime, StringFormat='{}{0}ms', TargetNullValue='—'}"
+                                                        Width="120" />
+                                    <DataGridTextColumn Header="Protocol"
+                                                        Binding="{Binding Protocol}"
+                                                        Width="90" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Empty State -->
+                    <Border Classes="loading-pulse"
+                            IsVisible="{Binding !ScanResults.Count}"
+                            IsVisibleChanged="OnEmptyStateChanged"
+                            CornerRadius="8"
+                            Padding="40">
+                        <StackPanel HorizontalAlignment="Center"
+                                    Spacing="10">
+                            <TextBlock Text="&#x1F50D;"
+                                       FontSize="42"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="No scan results yet"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="Configure your scan settings and click Start Scan to begin"
+                                       Classes="caption"
+                                       FontSize="13"
+                                       HorizontalAlignment="Center"
+                                       MaxWidth="300"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+
+</UserControl>

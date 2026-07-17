@@ -1,0 +1,25 @@
+{
+  "Scan": {
+    "DefaultTimeout": "00:00:03",
+    "DefaultMaxConcurrent": 100,
+    "DefaultPortRangeStart": 1,
+    "DefaultPortRangeEnd": 1024
+  },
+  "Storage": {
+    "HistoryRetentionDays": 90,
+    "AutoDelete": true,
+    "EncryptionEnabled": false
+  },
+  "Log": {
+    "Level": "Info",
+    "RetentionDays": 30
+  },
+  "UI": {
+    "Theme": 0,
+    "Language": 0,
+    "FontSize": 14,
+    "HighContrast": false,
+    "ReducedMotion": false,
+    "ScreenReaderMode": false
+  }
+}
