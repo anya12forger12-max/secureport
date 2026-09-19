@@ -175,24 +175,6 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <!-- Context Menu -->
-                    <DataGrid.ContextMenu>
-                        <ContextMenu AutomationProperties.Name="Scan History Context Menu">
-                            <MenuItem Header="View Details"
-                                      Command="{Binding ViewDetailsCommand}"
-                                      AutomationProperties.Name="View Scan Details"
-                                      TabIndex="51" />
-                            <MenuItem Header="Export"
-                                      Command="{Binding ExportScanCommand}"
-                                      AutomationProperties.Name="Export Scan Results"
-                                      TabIndex="52" />
-                            <MenuItem Header="Delete"
-                                      Command="{Binding DeleteScanCommand}"
-                                      AutomationProperties.Name="Delete Scan"
-                                      TabIndex="53" />
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
-
                 </StackPanel>
             </Border>
 

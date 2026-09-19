@@ -96,8 +96,7 @@
                             FontWeight="SemiBold"
                             AutomationProperties.Name="Accept Legal Consent" />
 
-                    <Grid ColumnDefinitions="*,*"
-                          ColumnSpacing="12">
+                    <Grid ColumnDefinitions="*,*">
 
                         <!-- Cancel Button -->
                         <Button Classes="secondary"

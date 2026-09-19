@@ -174,8 +174,7 @@
                                         CornerRadius="6"
                                         Background="{StaticResource SecondaryBackgroundBrush}">
                                     <Grid ColumnDefinitions="Auto,*,Auto"
-                                          RowDefinitions="Auto"
-                                          ColumnSpacing="12">
+                                          RowDefinitions="Auto">
                                         <Border Background="{StaticResource PrimaryAccentSubtleBrush}"
                                                 CornerRadius="6"
                                                 Width="32"
@@ -209,8 +208,7 @@
                                         CornerRadius="6"
                                         Margin="0,4,0,0">
                                     <Grid ColumnDefinitions="Auto,*,Auto"
-                                          RowDefinitions="Auto"
-                                          ColumnSpacing="12">
+                                          RowDefinitions="Auto">
                                         <Border Background="{StaticResource SecondaryAccentSubtleBrush}"
                                                 CornerRadius="6"
                                                 Width="32"
@@ -245,8 +243,7 @@
                                         Margin="0,4,0,0"
                                         Background="{StaticResource SecondaryBackgroundBrush}">
                                     <Grid ColumnDefinitions="Auto,*,Auto"
-                                          RowDefinitions="Auto"
-                                          ColumnSpacing="12">
+                                          RowDefinitions="Auto">
                                         <Border Background="{StaticResource SuccessSubtleBrush}"
                                                 CornerRadius="6"
                                                 Width="32"

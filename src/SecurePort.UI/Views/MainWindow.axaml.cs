@@ -115,31 +115,31 @@ public partial class MainWindow : Window
         }
     }
 
-    private void OnDashboardTapped(object? sender, TappedRoutedEventArgs e)
+    private void OnDashboardTapped(object? sender, TappedEventArgs e)
     {
         if (DataContext is MainViewModel vm)
             vm.NavigateToDashboardCommand.Execute(null);
     }
 
-    private void OnScanTapped(object? sender, TappedRoutedEventArgs e)
+    private void OnScanTapped(object? sender, TappedEventArgs e)
     {
         if (DataContext is MainViewModel vm)
             vm.NavigateToScanCommand.Execute(null);
     }
 
-    private void OnHistoryTapped(object? sender, TappedRoutedEventArgs e)
+    private void OnHistoryTapped(object? sender, TappedEventArgs e)
     {
         if (DataContext is MainViewModel vm)
             vm.NavigateToHistoryCommand.Execute(null);
     }
 
-    private void OnSettingsTapped(object? sender, TappedRoutedEventArgs e)
+    private void OnSettingsTapped(object? sender, TappedEventArgs e)
     {
         if (DataContext is MainViewModel vm)
             vm.NavigateToSettingsCommand.Execute(null);
     }
 
-    private void OnAboutTapped(object? sender, TappedRoutedEventArgs e)
+    private void OnAboutTapped(object? sender, TappedEventArgs e)
     {
         if (DataContext is MainViewModel vm)
             vm.NavigateToAboutCommand.Execute(null);

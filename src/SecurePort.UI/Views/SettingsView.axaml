@@ -300,8 +300,7 @@
                                    Classes="label"
                                    FontSize="13"
                                    FontWeight="Medium" />
-                        <Grid ColumnDefinitions="Auto,80,Auto,80"
-                              ColumnSpacing="10">
+                        <Grid ColumnDefinitions="Auto,80,Auto,80">
                             <TextBlock Text="Start"
                                        Classes="caption"
                                        FontSize="11"
@@ -513,8 +512,7 @@
             <Border Classes="panel"
                     Padding="20,16"
                     CornerRadius="12">
-                <Grid ColumnDefinitions="*,Auto"
-                      ColumnSpacing="12">
+                <Grid ColumnDefinitions="*,Auto">
                     <Button Classes="secondary"
                             Content="Reset to Defaults"
                             Command="{Binding ResetDefaultsCommand}"

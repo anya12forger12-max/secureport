@@ -97,7 +97,6 @@
         <Setter Property="MinHeight" Value="40"/>
         <Setter Property="CaretBrush" Value="{StaticResource PrimaryAccentBrush}"/>
         <Setter Property="SelectionBrush" Value="{StaticResource PrimaryAccentSubtleBrush}"/>
-        <Setter Property="WatermarkForeground" Value="{StaticResource TextSecondaryBrush}"/>
     </Style>
 
     <Style Selector="TextBox:pointerover">
@@ -488,9 +487,6 @@
          ═══════════════════════════════════════════════════════════════════ -->
 
     <Style Selector="ToggleSwitch">
-        <Setter Property="OnBackground" Value="{StaticResource PrimaryAccentBrush}"/>
-        <Setter Property="OffBackground" Value="{StaticResource BorderBrush}"/>
-        <Setter Property="ThumbBackground" Value="{StaticResource TextPrimaryBrush}"/>
         <Setter Property="MinWidth" Value="48"/>
         <Setter Property="MinHeight" Value="26"/>
     </Style>
@@ -866,7 +862,6 @@
         <Setter Property="FontFamily" Value="Inter, Segoe UI, sans-serif"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="RowBackground" Value="Transparent"/>
-        <Setter Property="AlternatingRowBackground" Value="{StaticResource SecondaryBackgroundBrush}"/>
         <Setter Property="GridLinesVisibility" Value="Horizontal"/>
         <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource BorderSubtleBrush}"/>
         <Setter Property="CornerRadius" Value="8"/>
@@ -905,7 +900,6 @@
 
     <Style Selector="Border.badge">
         <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="Padding" Value="8,4"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -914,22 +908,18 @@
 
     <Style Selector="Border.badge-success">
         <Setter Property="Background" Value="{StaticResource SuccessBrush}"/>
-        <Setter Property="Foreground" Value="#ffffff"/>
     </Style>
 
     <Style Selector="Border.badge-warning">
         <Setter Property="Background" Value="{StaticResource WarningBrush}"/>
-        <Setter Property="Foreground" Value="#ffffff"/>
     </Style>
 
     <Style Selector="Border.badge-error">
         <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
-        <Setter Property="Foreground" Value="#ffffff"/>
     </Style>
 
     <Style Selector="Border.badge-info">
         <Setter Property="Background" Value="{StaticResource InfoBrush}"/>
-        <Setter Property="Foreground" Value="#ffffff"/>
     </Style>
 
     <!-- ═══════════════════════════════════════════════════════════════════

@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using SecurePort.Core.Interfaces;
 using SecurePort.UI.Services;
 using SecurePort.UI.ViewModels;
@@ -72,12 +73,6 @@ public partial class App : Application
 
     private void OnThemeChanged(object? sender, Core.Enums.ThemeMode e)
     {
-        var variant = e switch
-        {
-            Core.Enums.ThemeMode.Light => Avalonia.Controls.WindowTitleBarBrush.Light,
-            _ => Avalonia.Controls.WindowTitleBarBrush.Default
-        };
-
         RequestedThemeVariant = e switch
         {
             Core.Enums.ThemeMode.Light => ThemeVariant.Light,

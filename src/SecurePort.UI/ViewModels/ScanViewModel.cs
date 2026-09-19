@@ -222,10 +222,10 @@ public partial class ScanViewModel : ViewModelBase
     private void SubscribeToProgress(Core.Interfaces.IScanner scanner)
     {
         _progressSubscription?.Dispose();
-        _progressSubscription = scanner.ProgressChanged.Subscribe(OnProgressChanged);
+        _progressSubscription = scanner.ProgressChanged.Subscribe(OnScannerProgress);
     }
 
-    private void OnProgressChanged(ScanProgress progress)
+    private void OnScannerProgress(ScanProgress progress)
     {
         Progress = progress;
         OpenPortCount = progress.OpenPorts;

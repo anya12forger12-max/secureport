@@ -25,7 +25,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
 
     - name: Extract version from tag
       id: version
@@ -36,7 +36,7 @@ jobs:
 
     - name: Create archive
       run: |
-        cd src/SecurePort.UI/bin/Release/net6.0/${{ matrix.runtime }}/publish
+        cd src/SecurePort.UI/bin/Release/net8.0/${{ matrix.runtime }}/publish
         tar -czf ../../../../SecurePort-${{ steps.version.outputs.VERSION }}-${{ matrix.runtime }}.tar.gz *
 
     - name: Upload artifact

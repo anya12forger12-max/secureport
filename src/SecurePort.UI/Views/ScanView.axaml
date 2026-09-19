@@ -51,8 +51,7 @@
                                    FontSize="13"
                                    FontWeight="Medium" />
                         <Grid ColumnDefinitions="*,Auto,*"
-                              RowDefinitions="Auto,Auto"
-                              ColumnSpacing="8">
+                              RowDefinitions="Auto,Auto">
 
                             <StackPanel Grid.Column="0"
                                         Spacing="4">
@@ -208,7 +207,6 @@
                                 Content="&#x25B6;  Start Scan"
                                 Command="{Binding StartScanCommand}"
                                 IsVisible="{Binding !IsScanning}"
-                                Width="100%"
                                 HorizontalAlignment="Stretch"
                                 MinHeight="48"
                                 FontSize="15"
@@ -221,7 +219,6 @@
                                 Content="&#x2716;  Cancel Scan"
                                 Command="{Binding CancelScanCommand}"
                                 IsVisible="{Binding IsScanning}"
-                                Width="100%"
                                 HorizontalAlignment="Stretch"
                                 MinHeight="48"
                                 FontSize="15"
@@ -234,7 +231,6 @@
                                 Content="&#x1F4BE;  Export Results"
                                 Command="{Binding ExportResultsCommand}"
                                 IsVisible="{Binding LastSession}"
-                                Width="100%"
                                 HorizontalAlignment="Stretch"
                                 MinHeight="44"
                                 FontSize="14"
@@ -302,9 +298,7 @@
 
                             <!-- Time Info -->
                             <Grid ColumnDefinitions="*,*"
-                                  RowDefinitions="Auto,Auto"
-                                  ColumnSpacing="20"
-                                  RowSpacing="6">
+                                  RowDefinitions="Auto,Auto">
                                 <StackPanel Grid.Row="0"
                                             Spacing="2">
                                     <TextBlock Text="Elapsed Time"
@@ -381,9 +375,7 @@
                             Margin="0,0,0,4"
                             BorderBrush="{StaticResource BorderBrush}">
                         <Grid ColumnDefinitions="*,*,*"
-                              RowDefinitions="Auto,Auto,Auto"
-                              ColumnSpacing="16"
-                              RowSpacing="8">
+                              RowDefinitions="Auto,Auto,Auto">
                             <TextBlock Grid.Row="0"
                                        Text="Scan Summary"
                                        Classes="label"
@@ -530,7 +522,6 @@
                     <!-- Empty State -->
                     <Border Classes="loading-pulse"
                             IsVisible="{Binding !ScanResults.Count}"
-                            IsVisibleChanged="OnEmptyStateChanged"
                             CornerRadius="8"
                             Padding="40">
                         <StackPanel HorizontalAlignment="Center"
