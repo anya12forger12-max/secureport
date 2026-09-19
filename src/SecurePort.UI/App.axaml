@@ -2,9 +2,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="SecurePort.UI.App"
              RequestedThemeVariant="Dark">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://SecurePort.UI/Assets/Themes/ThemeColors.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://SecurePort.UI/Assets/Themes/ThemeColors.axaml"/>
         <StyleInclude Source="avares://SecurePort.UI/Assets/Themes/GlobalStyles.axaml"/>
     </Application.Styles>
 </Application>
