@@ -9,6 +9,20 @@ public class ResultsSearchEngineTests
 {
     private readonly ResultsSearchEngine _engine = new();
 
+    // Deterministic entries: the engine indexes ScanId and ScanDate, whose
+    // random values could otherwise inject digits like "80" into the
+    // searchable text and make numeric-token tests flaky.
+    private static ResultEntry CreateSearchable(
+        int port,
+        string? serviceName = null,
+        string target = "192.168.1.1") =>
+        TestDataFactory.CreateResult(
+            port: port,
+            serviceName: serviceName,
+            target: target,
+            scanId: Guid.Empty,
+            scanDate: DateTimeOffset.MinValue);
+
     [Fact]
     public void Search_NullResults_ThrowsArgumentNullException()
     {
@@ -45,8 +59,8 @@ public class ResultsSearchEngineTests
     {
         var results = new List<ResultEntry>
         {
-            TestDataFactory.CreateResult(port: 80),
-            TestDataFactory.CreateResult(port: 443)
+            CreateSearchable(port: 80),
+            CreateSearchable(port: 443)
         };
 
         var found = _engine.Search(results, "80");
@@ -59,9 +73,9 @@ public class ResultsSearchEngineTests
     {
         var results = new List<ResultEntry>
         {
-            TestDataFactory.CreateResult(port: 80, serviceName: "HTTP"),
-            TestDataFactory.CreateResult(port: 443, serviceName: "HTTPS"),
-            TestDataFactory.CreateResult(port: 22, serviceName: "SSH")
+            CreateSearchable(port: 80, serviceName: "HTTP"),
+            CreateSearchable(port: 443, serviceName: "HTTPS"),
+            CreateSearchable(port: 22, serviceName: "SSH")
         };
 
         var found = _engine.Search(results, "80 HTTP");
