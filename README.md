@@ -4,7 +4,7 @@
 
 **Cross-platform TCP port scanner with privacy-first design and offline operation.**
 
-[![.NET 6](https://img.shields.io/badge/.NET-6.0-purple)](https://dotnet.microsoft.com/)
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
 [![Avalonia](https://img.shields.io/badge/Avalonia-11.0.10-blue)](https://avaloniaui.net/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)]()
@@ -83,7 +83,7 @@ Dependencies flow inward: UI → Results → Storage → Security → Core. Core
 
 ## Quick Start
 
-**Prerequisites:** [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+**Prerequisites:** [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) (install.sh can fetch it)
 
 ```bash
 git clone https://github.com/yourorg/SecurePort.git
